@@ -10,8 +10,9 @@ export default class LinksScreen extends React.Component {
   onButtonPressed = () => {
     console.log('KLICK!')
     axios.put('http://192.168.1.118:5000/user/update/5ce3f2262c5b7d66e98f2def', {
-      displayName: "Ansoooo2",
-      email: "anso@test.com2."
+      //axios.put('http://172.20.10.3:5000/user/update/5ce3f2262c5b7d66e98f2def', {
+      displayName: "Ansoooo2333",
+      email: "anso@test.com2333"
     })
       .then(res => console.log(res.data))
       .catch((err) => console.log(err));
@@ -23,7 +24,7 @@ export default class LinksScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <Button
-          onPress={this.onButtonPressed}
+          onPress={() => this.onButtonPressed()}
           title="Recommendation"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"

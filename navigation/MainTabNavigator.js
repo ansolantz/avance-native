@@ -4,16 +4,38 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
+import DashboardScreen from '../screens/DashboardScreen';
+import SignupScreen from '../screens/SignupScreen';
+import RegisterScreen from '../screens/RegisterScreen'
 import LinksScreen from '../screens/LinksScreen';
 import RecommendationScreen from '../screens/RecommendationScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+// const HomeStack = createStackNavigator({
+//   Home: HomeScreen,
+// });
+
+// HomeStack.navigationOptions = {
+//   tabBarLabel: 'Home',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={
+//         Platform.OS === 'ios'
+//           ? `ios-information-circle${focused ? '' : '-outline'}`
+//           : 'md-information-circle'
+//       }
+//     />
+//   ),
+// };
+
+
+const DashboardStack = createStackNavigator({
+  Dashboard: DashboardScreen,
 });
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+DashboardStack.navigationOptions = {
+  tabBarLabel: 'Dashboard',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -22,6 +44,36 @@ HomeStack.navigationOptions = {
           ? `ios-information-circle${focused ? '' : '-outline'}`
           : 'md-information-circle'
       }
+    />
+  ),
+};
+
+const SignupStack = createStackNavigator({
+  Signup: SignupScreen,
+});
+
+SignupStack.navigationOptions = {
+  tabBarLabel: 'Signup',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'logo-reddit' : 'logo-reddit'}
+    />
+  ),
+};
+
+const RegisterStack = createStackNavigator({
+  Register: RegisterScreen,
+});
+
+RegisterStack.navigationOptions = {
+  tabBarLabel: 'Register',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-checkmark-circle' : 'md-checkmark-circle'}
     />
   ),
 };
@@ -56,7 +108,10 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
+  //HomeStack,
+  DashboardStack,
+  SignupStack,
+  RegisterStack,
   LinksStack,
-  SettingsStack,
+  SettingsStack
 });
