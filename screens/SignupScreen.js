@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Button, TextInput } from 'react-native';
+import {
+  Text, Container, Content, Form, Item, Input, Label, Button,
+} from 'native-base';
+
 import auth from '../lib/auth-services'
-
-
 import axios from 'axios';
 
 export default class SignupScreen extends Component {
@@ -24,6 +25,8 @@ export default class SignupScreen extends Component {
     console.log(this.state)
     const { username, password } = this.state;
     auth.signup({ username, password });
+    //auth.updateUser({ username, password });
+    this.props.navigation.navigate('Dashboard')
 
   }
 
@@ -52,45 +55,46 @@ export default class SignupScreen extends Component {
   }
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Signup Screen</Text>
-        <ScrollView>
+      <Container>
 
-          <Text>Username:</Text>
-          <TextInput
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-            onChangeText={(username) => this.setState({ username })}
-            value={this.state.username}
-          />
+        <Content>
+          <Form>
+            <Item floatingLabel>
+              <Label>Username</Label>
+              <Input onChangeText={(username) => this.setState({ username })} />
+            </Item>
+            <Item floatingLabel last>
+              <Label>Password</Label>
+              <Input onChangeText={(password) => this.setState({ password })} />
+            </Item>
 
-          <Text>Password:</Text>
-          <TextInput
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-            onChangeText={(password) => this.setState({ password })}
-            value={this.state.password}
-          />
-          <Button
-            onPress={this.addUser}
-            title="Add user"
-            color="#841584"
-            accessibilityLabel="add user"
-          />
-          <Text>
-            ...
-          </Text>
-          <Button
-            onPress={this.updateUser}
-            title="Update a current user"
-            color="#841584"
-            accessibilityLabel="Update user"
-          />
+            <Button block info onPress={this.addUser}>
+              <Text>Signup</Text>
+            </Button>
 
-        </ScrollView>
+            <Button block info onPress={() => auth.logout()}>
+              <Text>Logout</Text>
+            </Button>
 
-      </View>
+
+
+
+          </Form>
+        </Content>
+      </Container>
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
