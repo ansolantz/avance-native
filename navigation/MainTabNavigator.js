@@ -5,7 +5,6 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import DashboardScreen from '../screens/DashboardScreen';
-import SignupScreen from '../screens/SignupScreen';
 import MyAccountScreen from '../screens/MyAccountScreen';
 import RegisterScreen from '../screens/RegisterScreen'
 import LinksScreen from '../screens/LinksScreen';
@@ -46,20 +45,9 @@ DashboardStack.navigationOptions = {
   ),
 };
 
-const SignupStack = createStackNavigator({
-  Signup: SignupScreen,
-});
 
-SignupStack.navigationOptions = {
-  tabBarLabel: 'Signup',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      type='FontAwesome'
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'check' : 'check'}
-    />
-  ),
-};
+
+
 
 const MyAccountStack = createStackNavigator({
   MyAccount: MyAccountScreen,
@@ -123,7 +111,7 @@ RegisterStack.navigationOptions = {
 export default createBottomTabNavigator({
   //HomeStack,
   DashboardStack,
-  SignupStack,
+
   MyAccountStack,
   RegisterStack,
   //LinksStack,

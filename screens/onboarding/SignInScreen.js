@@ -4,10 +4,10 @@ import {
   Text, Container, Content, Form, Item, Input, Label, Button,
 } from 'native-base';
 
-import auth from '../lib/auth-services'
-import axios from 'axios';
+import auth from '../../lib/auth-services'
 
-export default class SignupScreen extends Component {
+
+export default class SignInScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,39 +18,9 @@ export default class SignupScreen extends Component {
 
   static navigationOptions = {
     // header: null,
-    title: 'Signup'
+    title: 'Sign in'
   };
 
-  showError = () => {
-    Alert.alert(
-      'Alert Title',
-      'Error creating user',
-      [
-        { text: 'OK', onPress: () => console.log('OK Pressed') },
-      ],
-      { cancelable: false },
-    );
-
-  }
-
-
-  addUser = () => {
-    console.log('ADD USER!')
-    console.log(this.state)
-    const { username, password } = this.state;
-    // try {
-    auth.signup({ username, password })
-      .then(() => {
-        this.setState({ username: '', password: '' })
-        this.props.navigation.navigate('Dashboard')
-      })
-      .catch(err => console.log(err));
-
-    // } catch (error) {
-    //   this.showError();
-    // }
-
-  }
 
   render() {
     return (

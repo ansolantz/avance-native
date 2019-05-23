@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 import { Keyboard } from 'react-native';
 import {
   Text, Container, Content, Form, Item, Input, Label, Button,
-  List, ListItem, Left, Body, Right, Thumbnail
+  List, ListItem, Left, Body, Right, Thumbnail, Header, Title
 } from 'native-base';
 
 import auth from '../lib/auth-services'
-import axios from 'axios';
+
 import { NativeViewGestureHandler } from 'react-native-gesture-handler';
 
 export default class MyAccountScreen extends Component {
@@ -62,15 +63,41 @@ export default class MyAccountScreen extends Component {
   }
 
 
-  static navigationOptions = {
-    // header: null,
-    title: 'Uppdate User'
+  _signOutAsync = async () => {
+    auth.logout()
+    try {
+      const keys = await AsyncStorage.getAllKeys();
+      await AsyncStorage.multiRemove(keys);
+    } catch (error) {
+      console.log(error);
+    }
+    this.props.navigation.navigate('Onboarding');
   };
+
+  // static navigationOptions = {
+  //   // header: null,
+  //   title: 'Uppdate User'
+  // };
 
 
   render() {
     return (
       <Container>
+        <Header>
+          <Left>
+            <Button hasText transparent>
+              <Text>Back</Text>
+            </Button>
+          </Left>
+          <Body>
+            <Title>Your Profile</Title>
+          </Body>
+          <Right>
+            <Button onPress={() => this._signOutAsync()} hasText transparent>
+              <Text>Logout</Text>
+            </Button>
+          </Right>
+        </Header>
         <Content>
 
           <List>
