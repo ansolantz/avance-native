@@ -68,9 +68,6 @@ export default class SignupScreen extends Component {
               <Text>Signup</Text>
             </Button>
             <Text> </Text>
-            <Button block info onPress={() => auth.logout()}>
-              <Text>Logout</Text>
-            </Button>
 
           </Form>
         </Content>

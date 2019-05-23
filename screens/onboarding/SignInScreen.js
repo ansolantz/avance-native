@@ -18,9 +18,26 @@ export default class SignInScreen extends Component {
 
   static navigationOptions = {
     // header: null,
-    title: 'Sign in'
+    title: 'Login'
   };
 
+  handleSignInUser = () => {
+    console.log('SIGNIN USER!')
+    console.log(this.state)
+    const { username, password } = this.state;
+    // try {
+    auth.login({ username, password })
+      .then(() => {
+        this.setState({ username: '', password: '' })
+        this.props.navigation.navigate('Dashboard')
+      })
+      .catch(err => console.log(err));
+
+    // } catch (error) {
+    //   this.showError();
+    // }
+
+  }
 
   render() {
     return (
@@ -36,13 +53,10 @@ export default class SignInScreen extends Component {
               <Input secureTextEntry={true} onChangeText={(password) => this.setState({ password })} />
             </Item>
             <Text> </Text>
-            <Button block info onPress={this.addUser}>
-              <Text>Signup</Text>
+            <Button block info onPress={this.handleSignInUser}>
+              <Text>Login</Text>
             </Button>
-            <Text> </Text>
-            <Button block info onPress={() => auth.logout()}>
-              <Text>Logout</Text>
-            </Button>
+
 
           </Form>
         </Content>
