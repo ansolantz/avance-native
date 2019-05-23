@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Keyboard } from 'react-native';
 import {
   Text, Container, Content, Form, Item, Input, Label, Button,
   List, ListItem, Left, Body, Right, Thumbnail
@@ -6,6 +7,7 @@ import {
 
 import auth from '../lib/auth-services'
 import axios from 'axios';
+import { NativeViewGestureHandler } from 'react-native-gesture-handler';
 
 export default class MyAccountScreen extends Component {
   constructor(props) {
@@ -32,7 +34,7 @@ export default class MyAccountScreen extends Component {
 
   getUserData = () => {
     console.log('Getting user info')
-    auth.me()
+    auth.getUser()
       .then(user => {
         console.log(user)
         this.setState({
@@ -46,21 +48,24 @@ export default class MyAccountScreen extends Component {
         });
       })
       .catch((err) => console.log(err))
+  }
+
+  handleUserEdit = () => {
+    auth.editUser(this.state)
+      .then(() => {
+        //this.props.navigation.navigate('Dashboard')
+        Keyboard.dismiss();
+        this.forceUpdate();
+      })
+      .catch(err => console.log(err))
 
   }
+
 
   static navigationOptions = {
     // header: null,
     title: 'Uppdate User'
   };
-
-
-
-
-
-  //this.props.navigation.navigate('Dashboard')
-
-
 
 
   render() {
@@ -95,23 +100,23 @@ export default class MyAccountScreen extends Component {
 
             <Item floatingLabel last>
               <Label>Age</Label>
-              <Input keyboardType='numeric' value={this.state.age}
+              <Input keyboardType='number-pad' value={this.state.age}
                 onChangeText={(age) => this.setState({ age })} />
             </Item>
 
             <Item floatingLabel last>
               <Label>Wight (kg)</Label>
-              <Input keyboardType='numeric' value={this.state.weight}
+              <Input keyboardType='number-pad' value={this.state.weight}
                 onChangeText={(weight) => this.setState({ weight })} />
             </Item>
 
             <Item floatingLabel last>
               <Label>Height (cm)</Label>
-              <Input keyboardType='numeric' value={this.state.height}
+              <Input keyboardType='number-pad' value={this.state.height}
                 onChangeText={(height) => this.setState({ height })} />
             </Item>
-
-            <Button block info onPress={() => auth.editUser(this.state)}>
+            <Text> </Text>
+            <Button block info onPress={this.handleUserEdit}>
               <Text>Edit</Text>
             </Button>
             <Text> </Text>
