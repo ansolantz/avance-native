@@ -89,7 +89,7 @@ export default class MyAccountScreen extends Component {
 
             <Item floatingLabel last>
               <Label>Email</Label>
-              <Input value={this.state.email}
+              <Input keyboardType='email-address' value={this.state.email}
                 onChangeText={(email) => this.setState({ email })} />
             </Item>
 
@@ -100,14 +100,14 @@ export default class MyAccountScreen extends Component {
             </Item>
 
             <Item floatingLabel last>
-              <Label>Wight</Label>
-              <Input value={this.state.weight}
+              <Label>Wight (kg)</Label>
+              <Input keyboardType='numeric' value={this.state.weight}
                 onChangeText={(weight) => this.setState({ weight })} />
             </Item>
 
             <Item floatingLabel last>
-              <Label>Height</Label>
-              <Input value={this.state.height}
+              <Label>Height (cm)</Label>
+              <Input keyboardType='numeric' value={this.state.height}
                 onChangeText={(height) => this.setState({ height })} />
             </Item>
 
