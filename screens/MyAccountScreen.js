@@ -64,6 +64,7 @@ export default class MyAccountScreen extends Component {
 
 
   _signOutAsync = async () => {
+    console.log("LOGOUT")
     auth.logout()
     try {
       const keys = await AsyncStorage.getAllKeys();
@@ -74,6 +75,11 @@ export default class MyAccountScreen extends Component {
     this.props.navigation.navigate('Onboarding');
   };
 
+  handleDeleteUser = () => {
+    console.log("DELETE USER")
+    this._signOutAsync();
+    auth.deleteUser();
+  }
   // static navigationOptions = {
   //   // header: null,
   //   title: 'Uppdate User'
@@ -147,7 +153,7 @@ export default class MyAccountScreen extends Component {
               <Text>Edit</Text>
             </Button>
             <Text> </Text>
-            <Button block info onPress={() => auth.logout()}>
+            <Button block warning onPress={() => this.handleDeleteUser()}>
               <Text>DELETE THIS USER</Text>
             </Button>
 
