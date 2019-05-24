@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Content, List, ListItem, Thumbnail, Text, Icon } from 'native-base';
+import { LinearGradient } from 'expo';
 
 
 export default class DashboardScreen extends Component {
@@ -13,13 +14,18 @@ export default class DashboardScreen extends Component {
 
       <Container>
         <Content>
-          <List>
-            <ListItem height={90} button onPress={() => this.props.navigation.navigate('Recommendation')}>
-              <Thumbnail square size={80} source={require('../assets/images/water-icon.png')} />
-              <Text>Hydration</Text>
-              <Icon name='chevron-right' type='EvilIcons' />
 
-            </ListItem>
+          <List>
+
+
+            <LinearGradient colors={['rgba(0,0,0,0.8)', 'transparent']} >
+              <ListItem height={90} button onPress={() => this.props.navigation.navigate('Recommendation')}>
+                <Thumbnail square size={80} source={require('../assets/images/water-icon.png')} />
+                <Text>Vitamins</Text>
+              </ListItem>
+            </LinearGradient>
+
+
             <ListItem height={90}>
               <Thumbnail square size={80} source={require('../assets/images/apple-icon.png')} />
               <Text>Vitamins</Text>
@@ -47,8 +53,8 @@ export default class DashboardScreen extends Component {
               <Icon name='md-water' /> */}
 
           </List>
-        </Content>
-      </Container>
+        </Content >
+      </Container >
 
 
     );
