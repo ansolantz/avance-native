@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
 import {
-  Text, Container, Content, Form, Item, Input, Label, Button,
+  Text, Container, Content, Form, Item, Input, Label, Button, H1, H2
 } from 'native-base';
 import auth from '../../lib/auth-services'
 
@@ -54,6 +54,8 @@ export default class SignupScreen extends Component {
     return (
       <Container>
         <Content>
+          <H1>Welcome</H1>
+          <Text>Choose a username and password</Text>
           <Form>
             <Item floatingLabel>
               <Label>Username</Label>

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
 import {
-  Text, Container, Content, Form, Item, Input, Label, Button,
+  Text, Container, Content, Form, Item, Input, Label, Button, H2
 } from 'native-base';
 
 import auth from '../../lib/auth-services'
 
 
-export default class SignInScreen extends Component {
+export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,6 +43,8 @@ export default class SignInScreen extends Component {
     return (
       <Container>
         <Content>
+
+          <Text>Enter your username and password to login</Text>
           <Form>
             <Item floatingLabel>
               <Label>Username</Label>

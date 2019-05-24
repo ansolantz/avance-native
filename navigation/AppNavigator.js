@@ -1,6 +1,6 @@
 import React from 'react';
 import SignupScreen from '../screens/onboarding/SignupScreen';
-import SignInScreen from '../screens/onboarding/SignInScreen';
+import LoginScreen from '../screens/onboarding/LoginScreen';
 import AuthLoadingScreen from '../screens/onboarding/AuthLoadingScreen';
 import SplashScreen from '../screens/onboarding/SplashScreen';
 
@@ -10,12 +10,17 @@ import { createSwitchNavigator, createStackNavigator, createAppContainer } from 
 import MainTabNavigator from './MainTabNavigator';
 
 //
-const OnboardingStack = createStackNavigator({ SplashScreen: SplashScreen, SignInScreen: SignInScreen, SignupScreen: SignupScreen });
+const OnboardingStack = createStackNavigator({
+  SplashScreen: SplashScreen,
+  LoginScreen: LoginScreen,
+  SignupScreen: SignupScreen
+});
 
 export default createAppContainer(createSwitchNavigator(
   {
-    // You could add another route here for authentication.
-    // Read more at https://reactnavigation.org/docs/en/auth-flow.html
+    // Route for authentication.
+    // Help src https://reactnavigation.org/docs/en/auth-flow.html
+
     AuthLoading: AuthLoadingScreen,
     Onboarding: OnboardingStack,
     Main: MainTabNavigator,

@@ -17,7 +17,7 @@ export default class SplashScreen extends Component {
             <Text>Get started</Text>
           </Button>
           <Text> </Text>
-          <Button block info onPress={() => this.props.navigation.navigate('SignInScreen')}>
+          <Button block info onPress={() => this.props.navigation.navigate('LoginScreen')}>
             <Text>Login</Text>
           </Button>
         </Content>
