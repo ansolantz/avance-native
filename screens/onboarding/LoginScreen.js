@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
 import {
-  Text, Container, Content, Form, Item, Input, Label, Button, H2
+  Text, Container, Content, Form, Item, Input, Label, Button, H2, Icon
 } from 'native-base';
 
 import auth from '../../lib/auth-services'
@@ -43,14 +43,15 @@ export default class LoginScreen extends Component {
     return (
       <Container>
         <Content>
-
           <Text>Enter your username and password to login</Text>
           <Form>
             <Item floatingLabel>
+              <Icon name='ios-person' />
               <Label>Username</Label>
               <Input onChangeText={(username) => this.setState({ username })} />
             </Item>
             <Item floatingLabel last>
+              <Icon name='ios-unlock' />
               <Label>Password</Label>
               <Input secureTextEntry={true} onChangeText={(password) => this.setState({ password })} />
             </Item>
