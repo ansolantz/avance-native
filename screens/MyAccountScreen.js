@@ -104,10 +104,10 @@ export default class MyAccountScreen extends Component {
             </Button>
           </Right>
         </Header>
-        <Content>
+        <Content padder>
 
           <List>
-            <ListItem avatar>
+            <ListItem>
               <Left>
                 <Thumbnail large source={require('../assets/images/avatar.png')} />
               </Left>
