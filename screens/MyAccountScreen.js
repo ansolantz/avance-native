@@ -80,10 +80,9 @@ export default class MyAccountScreen extends Component {
     this._signOutAsync();
     auth.deleteUser();
   }
-  // static navigationOptions = {
-  //   // header: null,
-  //   title: 'Uppdate User'
-  // };
+  static navigationOptions = {
+    header: null
+  };
 
 
   render() {
