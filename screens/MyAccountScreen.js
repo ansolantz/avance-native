@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native';
 import { Keyboard } from 'react-native';
 import {
   Text, Container, Content, Form, Item, Input, Label, Button,
-  List, ListItem, Left, Body, Right, Thumbnail, Header, Title
+  List, ListItem, Left, Body, Right, Thumbnail, Header, Title, Icon
 } from 'native-base';
 
 import auth from '../lib/auth-services'
@@ -80,10 +80,9 @@ export default class MyAccountScreen extends Component {
     this._signOutAsync();
     auth.deleteUser();
   }
-  // static navigationOptions = {
-  //   // header: null,
-  //   title: 'Uppdate User'
-  // };
+  static navigationOptions = {
+    header: null
+  };
 
 
   render() {
@@ -153,8 +152,10 @@ export default class MyAccountScreen extends Component {
               <Text>Edit</Text>
             </Button>
             <Text> </Text>
-            <Button block warning onPress={() => this.handleDeleteUser()}>
+            <Button block danger onPress={() => this.handleDeleteUser()}>
+              <Icon name='ios-close-circle' />
               <Text>DELETE THIS USER</Text>
+              <Icon name='ios-close-circle' />
             </Button>
 
 

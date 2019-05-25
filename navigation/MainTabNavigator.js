@@ -32,6 +32,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 
 const DashboardStack = createStackNavigator({
   Dashboard: DashboardScreen,
+  Recommendation: RecommendationScreen,
 });
 
 DashboardStack.navigationOptions = {
