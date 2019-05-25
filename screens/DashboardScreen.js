@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Content, List, ListItem, Thumbnail, Text, H2, Icon, Header, Image, Body, Left, Right } from 'native-base';
+import { Container, Content, List, ListItem, Thumbnail, Text, H2, Icon, Header, Body, Left, Right } from 'native-base';
 import { LinearGradient } from 'expo';
+import { Image } from 'react-native';
 
 
 export default class DashboardScreen extends Component {
@@ -17,7 +18,7 @@ export default class DashboardScreen extends Component {
           <Header>
             <Left></Left>
             <Body>
-              <H2>avance</H2>
+              <Image style={{ width: 182, height: 35 }} source={require('../assets/images/logo.png')} />
             </Body>
             <Right></Right>
           </Header>
