@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import {
   Title,
   Button,
@@ -16,21 +16,24 @@ import {
 export default class ActivityCard extends React.Component {
   render() {
     return (
-      <Card style={{width:'46%', marginBottom: 15}}>
-        <CardItem>
-          <Body></Body>
-        </CardItem>
-        <CardItem cardBody style={{ flex: 1 }}>
-          <Icon style={{ flex: 1, fontSize: 94, textAlign: 'center', color: '#09bac9' }} 
-          type={this.props.activity.type} 
-          name={this.props.activity.name} />
-        </CardItem>
-        <CardItem style={{ paddingVertical: 0 }}>
-          <Body>
+      <TouchableOpacity style={{ width: '46%', marginBottom: 15 }}
+        onPress={() => this.props.handleActivityClick(this.props.activity.activityName)} >
+        <Card >
+          <CardItem>
+            <Body></Body>
+          </CardItem>
+          <CardItem cardBody style={{ flex: 1 }}>
+            <Icon style={{ flex: 1, fontSize: 94, textAlign: 'center', color: '#09bac9' }}
+              type={this.props.activity.type}
+              name={this.props.activity.name} />
+          </CardItem>
+          <CardItem style={{ paddingVertical: 0 }}>
+            <Body>
               <Text>2/8 today</Text>
-          </Body>
-        </CardItem>
-      </Card>
+            </Body>
+          </CardItem>
+        </Card>
+      </TouchableOpacity>
     )
   }
 }

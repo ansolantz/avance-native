@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import {
   Container,
   Header,
@@ -19,6 +19,7 @@ import {
 
 import ActivityCard from '../components/ActivityCard';
 import { WebBrowser } from 'expo';
+import auth from '../lib/auth-services'
 
 
 export default class RegisterScreen extends React.Component {
@@ -27,33 +28,40 @@ export default class RegisterScreen extends React.Component {
 
     this.activities = [
       {
-        id: 'drink-water',
+        activityName: 'drink-water',
         name: 'local-drink',
         type: 'MaterialIcons'
       },
       {
-        id: 'drink-coffe',
+        activityName: 'drink-coffe',
         name: 'coffee',
         type: 'FontAwesome'
       },
       {
-        id: 'drink-soda',
+        activityName: 'drink-soda',
         name: 'cup',
         type: 'Entypo'
-      }, 
+      },
       {
-        id: 'barcode-scan',
+        activityName: 'barcode-scan',
         name: 'barcode-scan',
         type: 'MaterialCommunityIcons'
       },
       {
-        id: 'add-photo',
+        activityName: 'add-photo',
         name: 'camera',
         type: 'Entypo'
       }
     ]
   }
 
+
+  handleActivityClick = (activityName) => {
+    console.log("add activity");
+    console.log("activity", activityName)
+
+    auth.addActivity(activityName);
+  }
 
   static navigationOptions = {
     header: null,
@@ -69,15 +77,17 @@ export default class RegisterScreen extends React.Component {
           </Body>
         </Header>
         <Content padder>
-        <View style={{flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap' }}>
 
-          {
-            this.activities.map((activityElement) =>{
-              return(<ActivityCard key={activityElement.id} activity={activityElement} />) 
-            })
-          }
-            
-        </View>
+            {
+              this.activities.map((activityElement, index) => {
+                return (<ActivityCard key={activityElement.activityName}
+                  handleActivityClick={this.handleActivityClick}
+                  activity={activityElement} />)
+              })
+            }
+
+          </View>
         </Content>
       </Container>
     );
