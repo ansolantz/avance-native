@@ -81,7 +81,8 @@ export default class MyAccountScreen extends Component {
     auth.deleteUser();
   }
   static navigationOptions = {
-    header: null
+    header: null,
+    title: null
   };
 
 
@@ -148,7 +149,7 @@ export default class MyAccountScreen extends Component {
                 onChangeText={(height) => this.setState({ height })} />
             </Item>
             <Text> </Text>
-            <Button block info onPress={this.handleUserEdit}>
+            <Button block primary onPress={this.handleUserEdit}>
               <Text>Edit</Text>
             </Button>
             <Text> </Text>
