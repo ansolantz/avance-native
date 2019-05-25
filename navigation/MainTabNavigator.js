@@ -9,6 +9,8 @@ import MyAccountScreen from '../screens/MyAccountScreen';
 import RegisterScreen from '../screens/RegisterScreen'
 import LinksScreen from '../screens/LinksScreen';
 import RecommendationScreen from '../screens/RecommendationScreen';
+import BarcodeScannerScreen from '../screens/BarcodeScannerScreen';
+import FeedScreen from '../screens/FeedScreen'
 import SettingsScreen from '../screens/SettingsScreen';
 
 // const HomeStack = createStackNavigator({
@@ -39,16 +41,44 @@ DashboardStack.navigationOptions = {
   tabBarLabel: 'Dashboard',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
-      type='MaterialCommunityIcons'
+      type='SimpleLineIcons'
       focused={focused}
-      name={Platform.OS === 'ios' ? 'home-circle' : 'home-circle'}
+      name={Platform.OS === 'ios' ? 'home' : 'home'}
     />
   ),
 };
 
 
+const RegisterStack = createStackNavigator({
+  Register: RegisterScreen,
+  BarcodeScanner: BarcodeScannerScreen,
+});
 
+RegisterStack.navigationOptions = {
+  tabBarLabel: 'Register',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      type='AntDesign'
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'addfile' : 'addfile'}
+    />
+  ),
+};
 
+const FeedStack = createStackNavigator({
+  Feed: FeedScreen,
+});
+
+FeedStack.navigationOptions = {
+  tabBarLabel: 'Feed',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      type='Octicons'
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'tasklist' : 'tasklist'}
+    />
+  ),
+};
 
 const MyAccountStack = createStackNavigator({
   MyAccount: MyAccountScreen,
@@ -65,39 +95,7 @@ MyAccountStack.navigationOptions = {
   ),
 };
 
-const RegisterStack = createStackNavigator({
-  Register: RegisterScreen,
-});
 
-RegisterStack.navigationOptions = {
-  tabBarLabel: 'Register',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      type='MaterialIcons'
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'add-a-photo' : 'add-a-photo'}
-    />
-  ),
-};
-
-// const LinksStack = createStackNavigator({
-//   Links: LinksScreen,
-//   Recommendation: RecommendationScreen
-// });
-
-// LinksStack.navigationOptions = {
-//   tabBarLabel: 'Links',
-//   tabBarIcon: ({ focused }) => (
-//     <TabBarIcon
-//       focused={focused}
-//       name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-//     />
-//   ),
-// };
-
-// const SettingsStack = createStackNavigator({
-//   Settings: SettingsScreen,
-// });
 
 // SettingsStack.navigationOptions = {
 //   tabBarLabel: 'Settings',
@@ -112,9 +110,10 @@ RegisterStack.navigationOptions = {
 export default createBottomTabNavigator({
   //HomeStack,
   DashboardStack,
-
-  MyAccountStack,
   RegisterStack,
+  FeedStack,
+  MyAccountStack,
+
   //LinksStack,
   //SettingsStack
 });
