@@ -90,10 +90,6 @@ export default class RegisterScreen extends React.Component {
                   activity={activityElement} />)
               })
             }
-
-            <Button onPress={() => this.props.navigation.navigate('Modal')}>
-              <Text>Modal</Text>
-            </Button>
           </View>
         </Content>
       </Container>

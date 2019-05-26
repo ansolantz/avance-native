@@ -11,7 +11,6 @@ import LinksScreen from '../screens/LinksScreen';
 import RecommendationScreen from '../screens/RecommendationScreen';
 import BarcodeScannerScreen from '../screens/BarcodeScannerScreen';
 import FeedScreen from '../screens/FeedScreen';
-import ModalScreen from '../screens/ModalScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 // const HomeStack = createStackNavigator({
@@ -53,7 +52,6 @@ DashboardStack.navigationOptions = {
 const RegisterStack = createStackNavigator({
   Register: RegisterScreen,
   BarcodeScanner: BarcodeScannerScreen,
-  Modal: ModalScreen,
 });
 
 RegisterStack.navigationOptions = {
