@@ -11,6 +11,8 @@ import LinksScreen from '../screens/LinksScreen';
 import RecommendationScreen from '../screens/RecommendationScreen';
 import BarcodeScannerScreen from '../screens/BarcodeScannerScreen';
 import FeedScreen from '../screens/FeedScreen';
+import PedometerScreen from '../screens/PedometerScreen';
+
 import SettingsScreen from '../screens/SettingsScreen';
 
 // const HomeStack = createStackNavigator({
@@ -35,6 +37,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 const DashboardStack = createStackNavigator({
   Dashboard: DashboardScreen,
   Recommendation: RecommendationScreen,
+  Pedometer: PedometerScreen,
 });
 
 DashboardStack.navigationOptions = {
