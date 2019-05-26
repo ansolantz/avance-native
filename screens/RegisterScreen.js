@@ -62,7 +62,7 @@ export default class RegisterScreen extends React.Component {
     if (activityName === 'barcode-scan') {
       this.props.navigation.navigate('BarcodeScanner');
     } else {
-      auth.addActivity(activityName);
+      auth.addActivity(activityName, {});
     }
 
   }
@@ -91,6 +91,9 @@ export default class RegisterScreen extends React.Component {
               })
             }
 
+            <Button onPress={() => this.props.navigation.navigate('Modal')}>
+              <Text>Modal</Text>
+            </Button>
           </View>
         </Content>
       </Container>
