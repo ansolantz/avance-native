@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Modal, Alert } from 'react-native';
 import {
   Container,
   Header,
@@ -25,6 +25,10 @@ import auth from '../lib/auth-services'
 export default class RegisterScreen extends React.Component {
   constructor() {
     super()
+    this.state = {
+      modalVisible: false,
+      activityName: ''
+    };
 
     this.activities = [
       {
@@ -55,6 +59,9 @@ export default class RegisterScreen extends React.Component {
     ]
   }
 
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible });
+  }
 
   handleActivityClick = (activityName) => {
     console.log("add activity");
@@ -63,6 +70,8 @@ export default class RegisterScreen extends React.Component {
       this.props.navigation.navigate('BarcodeScanner');
     } else {
       auth.addActivity(activityName, {});
+      this.setState({ activityName })
+      this.setModalVisible(true);
     }
 
   }
@@ -85,12 +94,33 @@ export default class RegisterScreen extends React.Component {
 
             {
               this.activities.map((activityElement, index) => {
-                return (<ActivityCard key={activityElement.activityName}
-                  handleActivityClick={this.handleActivityClick}
-                  activity={activityElement} />)
+                return (
+                  <ActivityCard key={activityElement.activityName}
+                    handleActivityClick={this.handleActivityClick}
+                    activity={activityElement} />
+                )
               })
             }
           </View>
+
+          <Modal animationType="slide"
+            transparent={true}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              Alert.alert('Modal has been closed.');
+            }}>
+
+            <View style={styles.modalContent}>
+              <H2>Great!</H2>
+              <Text>Activity {this.state.activityName} registered</Text>
+
+              <Button primary block onPress={() => {
+                this.setModalVisible(!this.state.modalVisible);
+
+              }}>
+                <Text>Close</Text></Button>
+            </View>
+          </Modal>
         </Content>
       </Container>
     );
@@ -98,3 +128,24 @@ export default class RegisterScreen extends React.Component {
   };
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    backgroundColor: '#eaeaea',
+    padding: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    top: '15%',
+    height: '50%',
+    borderColor: 'rgba(0, 0, 0, 0.6)',
+  },
+  bottomModal: {
+    justifyContent: 'flex-end',
+    margin: 0,
+  },
+});
