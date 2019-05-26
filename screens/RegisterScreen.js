@@ -59,8 +59,12 @@ export default class RegisterScreen extends React.Component {
   handleActivityClick = (activityName) => {
     console.log("add activity");
     console.log("activity", activityName)
+    if (activityName === 'barcode-scan') {
+      this.props.navigation.navigate('BarcodeScanner');
+    } else {
+      auth.addActivity(activityName, {});
+    }
 
-    auth.addActivity(activityName);
   }
 
   static navigationOptions = {
@@ -86,7 +90,6 @@ export default class RegisterScreen extends React.Component {
                   activity={activityElement} />)
               })
             }
-
           </View>
         </Content>
       </Container>

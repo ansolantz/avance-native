@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-import {
-  Text, Container, Content, H1, Button, Image, Card, CardItem, Thumbnail, Icon
-} from 'native-base';
+import { Text, Container, Content, H1, Button, Card, CardItem, Thumbnail, Icon } from 'native-base';
+import { Image } from 'react-native'
 
 
 export default class SplashScreen extends Component {
