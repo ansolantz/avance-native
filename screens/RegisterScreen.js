@@ -34,30 +34,36 @@ export default class RegisterScreen extends React.Component {
     this.activities = [
       {
         activityName: 'drink-water',
+        positiveGoal: 15,
         name: 'local-drink',
         type: 'MaterialIcons',
         imageType: 'icon'
       },
       {
         activityName: 'drink-coffe',
+        negativeGoal: 5,
+        positiveGoal: -1,
         name: 'coffee',
         type: 'FontAwesome',
         imageType: 'emoji'
       },
       {
         activityName: 'drink-soda',
+        positiveGoal: -1,
         name: 'cup',
         type: 'Entypo',
         imageType: 'icon'
       },
       {
         activityName: 'barcode-scan',
+        positiveGoal: -1,
         name: 'barcode-scan',
         type: 'MaterialCommunityIcons',
         imageType: 'icon'
       },
       {
         activityName: 'add-photo',
+        positiveGoal: -1,
         name: 'camera',
         type: 'Entypo',
         imageType: 'icon'
@@ -69,14 +75,14 @@ export default class RegisterScreen extends React.Component {
     this.setState({ modalVisible: visible });
   }
 
-  handleActivityClick = (activityName) => {
+  handleActivityClick = (activity) => {
     console.log("add activity");
-    console.log("activity", activityName)
-    if (activityName === 'barcode-scan') {
+    console.log("activity", activity.activityName)
+    if (activity.activityName === 'barcode-scan') {
       this.props.navigation.navigate('BarcodeScanner');
     } else {
-      auth.addActivity(activityName, {});
-      this.setState({ activityName })
+      auth.addActivity(activity.activityName, activity.positiveGoal, {});
+      this.setState({ activityName: activity.activityName })
       this.setModalVisible(true);
     }
 
