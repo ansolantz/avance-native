@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
 import {
-  Text, Container, Content, Form, Item, Input, Label, Button, H2, Icon
+  Text, Container, Content, Form, Item, Input, Label, Button, H2, Icon, Header, Body, Left, Right, Title
 } from 'native-base';
 
 import auth from '../../lib/auth-services'
@@ -17,8 +17,8 @@ export default class LoginScreen extends Component {
   }
 
   static navigationOptions = {
-    // header: null,
-    title: 'Login'
+    header: null,
+    //title: 'Login'
   };
 
   handleSignInUser = () => {
@@ -41,9 +41,23 @@ export default class LoginScreen extends Component {
 
   render() {
     return (
-      <Container>
-        <Content>
-          <Text>Enter your username and password to login</Text>
+     <Container>
+        <Header>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Login</Title>
+          </Body>
+          <Right />
+        </Header>
+
+
+        <Content padder style={{marginTop:10}}>
+    
+      
           <Form>
             <Item floatingLabel>
               <Icon name='ios-person' />
@@ -56,7 +70,7 @@ export default class LoginScreen extends Component {
               <Input secureTextEntry={true} onChangeText={(password) => this.setState({ password })} />
             </Item>
             <Text> </Text>
-            <Button block info onPress={this.handleSignInUser}>
+            <Button style={{marginTop:40}} block primary onPress={this.handleSignInUser}>
               <Text>Login</Text>
             </Button>
 

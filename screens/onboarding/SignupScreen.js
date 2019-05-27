@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
 import {
-  Text, Container, Content, Form, Item, Input, Label, Button, H1, H2
+  Text, Container, Content, Form, Item, Input, Icon, Label, Button, H1, H2, H3, Header, Left, Right, Body, Title
 } from 'native-base';
 import auth from '../../lib/auth-services'
 
@@ -15,8 +15,8 @@ export default class SignupScreen extends Component {
   }
 
   static navigationOptions = {
-    // header: null,
-    title: 'Signup'
+    header: null,
+    //title: 'Signup'
   };
 
   showError = () => {
@@ -53,23 +53,39 @@ export default class SignupScreen extends Component {
   render() {
     return (
       <Container>
-        <Content>
-          <H1>Welcome</H1>
-          <Text>Choose a username and password</Text>
+        <Header>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Signup</Title>
+          </Body>
+          <Right />
+        </Header>
+
+
+        <Content padder style={{marginTop:10}}>
+    
+        <Text style={{margin:10}}>Welcome, please choose a username and password</Text>
           <Form>
             <Item floatingLabel>
+            <Icon name='ios-person' />
               <Label>Username</Label>
               <Input onChangeText={(username) => this.setState({ username })} />
             </Item>
+            
             <Item floatingLabel last>
+            <Icon name='ios-unlock' />
               <Label>Password</Label>
               <Input secureTextEntry={true} onChangeText={(password) => this.setState({ password })} />
             </Item>
-            <Text> </Text>
-            <Button block info onPress={this.addUser}>
+           
+            <Button style={{marginTop:40}} block primary onPress={this.addUser}>
               <Text>Signup</Text>
             </Button>
-            <Text> </Text>
+      
 
           </Form>
         </Content>

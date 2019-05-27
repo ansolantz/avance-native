@@ -18,6 +18,7 @@ import {
 } from "native-base";
 
 import ActivityCard from '../components/ActivityCard';
+import Emoji from 'react-native-emoji';
 import { WebBrowser } from 'expo';
 import auth from '../lib/auth-services'
 
@@ -103,6 +104,7 @@ export default class RegisterScreen extends React.Component {
                 )
               })
             }
+             <Emoji style={{ flex: 1, fontSize: 100, textAlign: 'center' }} name="coffee" type=''/>
           </View>
 
           <Modal animationType="slide"

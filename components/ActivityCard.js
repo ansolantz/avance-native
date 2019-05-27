@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Image, TouchableOpacity } from 'react-native';
+import Emoji from 'react-native-emoji';
 import {
   Title,
   Button,
@@ -26,6 +27,7 @@ export default class ActivityCard extends React.Component {
             <Icon style={{ flex: 1, fontSize: 94, textAlign: 'center', color: '#09bac9' }}
               type={this.props.activity.type}
               name={this.props.activity.name} />
+
           </CardItem>
           <CardItem style={{ paddingVertical: 0 }}>
             <Body>
