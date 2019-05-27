@@ -1,50 +1,48 @@
 import React, { Component } from 'react';
 
-import { Text, Container, Content, H1, Button, Card, CardItem, Thumbnail, Icon } from 'native-base';
-import { Image } from 'react-native'
+import { Text, Container, Content, H1, Button, Header, Title, Card, CardItem, Thumbnail, Icon, Left, Right, Body } from 'native-base';
+import { StyleSheet, Image } from "react-native";
 
 
 export default class SplashScreen extends Component {
-
+  static navigationOptions = {
+    header: null,
+    title: null
+  };
   render() {
     return (
+      <Container style={styles.container}>
+        <Content padder>
+        
+        <Text style={{ marginTop: 50, textAlign: 'center', fontSize: 60, color: '#777777'}}>avance</Text>
+              <Image
+                style={{width: 250, height: 250}}
+                source={require('../../assets/images/logo-icon-transparent.png')}
+              />
 
-      <Container style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Content>
-          <H1>SplashScreen </H1>
-          <Text></Text>
-          <Card>
-            <CardItem>
-              <Text>Welcome</Text>
-              <Text note>Test..</Text>
-            </CardItem>
-            <CardItem>
-              <Thumbnail large source={require('../../assets/images/test-logo.png')} />
-              {/* <Image style={{ resizeMode: 'cover' }} source={require('../../assets/images/test-logo.png')} />  */}
-
-            </CardItem>
-
-            <CardItem>
-              <Button info onPress={() => this.props.navigation.navigate('SignupScreen')}>
+          <Button block primary onPress={() => this.props.navigation.navigate('SignupScreen')}>
                 <Text>Get started</Text>
               </Button>
               <Text> </Text>
-              <Button info onPress={() => this.props.navigation.navigate('LoginScreen')}>
+              <Button block primary onPress={() => this.props.navigation.navigate('LoginScreen')}>
                 <Text>Login</Text>
               </Button>
-            </CardItem>
-
-          </Card>
-        </Content>
+          </Content>
       </Container>
-
     );
   }
 }
 
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
+});
 
 
 
