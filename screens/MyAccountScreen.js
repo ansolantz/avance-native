@@ -150,7 +150,7 @@ export default class MyAccountScreen extends Component {
             </Item>
             <Text> </Text>
             <Button block primary onPress={this.handleUserEdit}>
-              <Text>Edit</Text>
+              <Text>Update</Text>
             </Button>
             <Text> </Text>
             <Button block danger onPress={() => this.handleDeleteUser()}>

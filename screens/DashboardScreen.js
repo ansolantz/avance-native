@@ -24,6 +24,7 @@ export default class DashboardScreen extends Component {
             <LinearGradient start={[1, 1]} end={[0, 0]} colors={['#afbbda', '#8b96b3', '#6c8acc']} style={{ margin: 5, borderRadius: 15 }} >
               <ListItem height={100} button onPress={() => this.props.navigation.navigate('Recommendation')}>
                 <Thumbnail square size={80} source={require('../assets/images/water-icon.png')} />
+
                 <Text style={{ color: '#ffffff' }}>Hidration</Text>
               </ListItem>
             </LinearGradient>

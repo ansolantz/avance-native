@@ -35,27 +35,32 @@ export default class RegisterScreen extends React.Component {
       {
         activityName: 'drink-water',
         name: 'local-drink',
-        type: 'MaterialIcons'
+        type: 'MaterialIcons',
+        imageType: 'icon'
       },
       {
         activityName: 'drink-coffe',
         name: 'coffee',
-        type: 'FontAwesome'
+        type: 'FontAwesome',
+        imageType: 'emoji'
       },
       {
         activityName: 'drink-soda',
         name: 'cup',
-        type: 'Entypo'
+        type: 'Entypo',
+        imageType: 'icon'
       },
       {
         activityName: 'barcode-scan',
         name: 'barcode-scan',
-        type: 'MaterialCommunityIcons'
+        type: 'MaterialCommunityIcons',
+        imageType: 'icon'
       },
       {
         activityName: 'add-photo',
         name: 'camera',
-        type: 'Entypo'
+        type: 'Entypo',
+        imageType: 'icon'
       }
     ]
   }
@@ -104,7 +109,7 @@ export default class RegisterScreen extends React.Component {
                 )
               })
             }
-             <Emoji style={{ flex: 1, fontSize: 100, textAlign: 'center' }} name="coffee" type=''/>
+
           </View>
 
           <Modal animationType="slide"
