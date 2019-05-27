@@ -84,11 +84,13 @@ export default class RegisterScreen extends React.Component {
   render() {
     return (
       <Container>
+
         <Header>
           <Body>
-            <Text>Register an activity</Text>
+            <Title>Register an activity</Title>
           </Body>
         </Header>
+
         <Content padder>
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap' }}>
 
