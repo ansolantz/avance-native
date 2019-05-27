@@ -14,7 +14,7 @@ export default class PedometerScreen extends React.Component {
   };
 
 
-  goal = 20;
+  goal = 10000;
   activityName = 'walk';
 
   componentDidMount() {
