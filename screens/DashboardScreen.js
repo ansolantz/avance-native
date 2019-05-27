@@ -38,7 +38,7 @@ export default class DashboardScreen extends Component {
             </LinearGradient>
 
             <LinearGradient start={[1, 1]} end={[0, 0]} colors={['#d8bfde', '#c899d4', '#8f4ea0']} style={{ margin: 5, borderRadius: 15 }} >
-              <ListItem height={100} button onPress={() => this.props.navigation.navigate('Recommendation')}>
+              <ListItem height={100} button onPress={() => this.props.navigation.navigate('Pedometer')}>
                 <Thumbnail square size={80} source={require('../assets/images/walking-icon.png')} />
                 <Text style={{ color: '#ffffff' }}>Move</Text>
               </ListItem>
