@@ -67,9 +67,9 @@ export default class FeedScreen extends Component {
             </CardItem>
             <CardItem style={{ paddingVertical: 0 }}>
               <Body>
+                <Text note>You drank x glasses of water today!</Text>
                 <Text note>
-                <Icon style={styles.small} active name="thumbs-up" /> Keep up the good jobb!
-                  
+                  <Icon style={styles.small} active name="thumbs-up" /> Keep up the good jobb!
                 </Text>
               </Body>
             </CardItem>
@@ -99,9 +99,9 @@ export default class FeedScreen extends Component {
             </CardItem>
             <CardItem style={{ paddingVertical: 0 }}>
               <Body>
+                <Text note>You walked x steps today!</Text>
                 <Text note>
-                <Icon style={styles.small} active name="thumbs-up" /> Keep up the good jobb!
-                  
+                  <Icon style={styles.small} active name="thumbs-up" /> Keep up the good jobb!
                 </Text>
               </Body>
             </CardItem>
