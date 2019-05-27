@@ -75,7 +75,7 @@ export default class BarcodeScannerScreen extends Component {
             <H2>{this.state.barcodeInfo.product_name}</H2>
             <Text>{`Barcode: ${this.state.barcodeInfo.barcode_number}`}</Text>
             <Text>{`Barcode Type: ${this.state.barcodeInfo.barcode_type}`}</Text>
-            <Text>{`Description: ${this.state.barcodeInfo.description}`}</Text>
+            <Text>{`Description: ${this.state.barcodeInfo.description.substr(1, 109)}...`}</Text>
             {/* <Text>{`Category: ${this.state.barcodeInfo.category}`}</Text> */}
             <Text>{`Nurition facts: ${this.state.barcodeInfo.nutrition_facts}`}</Text>
             <Image style={{ width: 200, height: 200 }} resizeMode='contain' source={{ uri: this.state.barcodeInfo.images[0] }} />
