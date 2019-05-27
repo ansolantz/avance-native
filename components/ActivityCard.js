@@ -19,7 +19,7 @@ export default class ActivityCard extends React.Component {
 
     return (
       <TouchableOpacity style={{ width: '46%', marginBottom: 15 }}
-        onPress={() => this.props.handleActivityClick(this.props.activity.activityName)} >
+        onPress={() => this.props.handleActivityClick(this.props.activity)} >
         <Card >
           <CardItem>
             <Body></Body>
@@ -33,7 +33,7 @@ export default class ActivityCard extends React.Component {
             }
             {
               this.props.activity.imageType === 'icon' &&
-              <Icon style={{ flex: 1, fontSize: 88, textAlign: 'center', color: '#09bac9' }}
+              <Icon style={{ flex: 1, fontSize: 78, textAlign: 'center', color: '#09bac9' }}
                 type={this.props.activity.type}
                 name={this.props.activity.name} />
             }
