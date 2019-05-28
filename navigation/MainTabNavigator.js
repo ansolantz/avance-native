@@ -13,23 +13,6 @@ import VitaminScreen from '../screens/VitaminScreen';
 
 
 
-// const HomeStack = createStackNavigator({
-//   Home: HomeScreen,
-// });
-
-// HomeStack.navigationOptions = {
-//   tabBarLabel: 'Home',
-//   tabBarIcon: ({ focused }) => (
-//     <TabBarIcon
-//       focused={focused}
-//       name={
-//         Platform.OS === 'ios'
-//           ? `ios-information-circle${focused ? '' : '-outline'}`
-//           : 'md-information-circle'
-//       }
-//     />
-//   ),
-// };
 
 
 const DashboardStack = createStackNavigator({
@@ -40,7 +23,7 @@ const DashboardStack = createStackNavigator({
 });
 
 DashboardStack.navigationOptions = {
-  tabBarLabel: 'Dashboard',
+  tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       type='SimpleLineIcons'
@@ -87,7 +70,7 @@ const MyAccountStack = createStackNavigator({
 });
 
 MyAccountStack.navigationOptions = {
-  tabBarLabel: 'MyAccount',
+  tabBarLabel: 'My Account',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       type='FontAwesome'

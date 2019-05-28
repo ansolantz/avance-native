@@ -15,18 +15,24 @@ import {
 } from "native-base";
 
 export default class ActivityCard extends React.Component {
-  render() {
 
+  render() {
+  
     return (
       <TouchableOpacity style={{ width: '46%', marginBottom: 15 }}
         onPress={() => this.props.handleActivityClick(this.props.activity)} >
+  
         <Card >
           <CardItem>
             <Body></Body>
           </CardItem>
-          <CardItem cardBody style={{ flex: 1 }}>
+          <CardItem cardBody style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
 
+          {
+              this.props.activity.imageType === 'image' &&
 
+              <Thumbnail style={{ width: 140, height: 140, borderRadius: 70}} source={this.props.activity.name} />
+            }
             {
               this.props.activity.imageType === 'emoji' &&
               <Emoji style={{ flex: 1, fontSize: 90, textAlign: 'center' }} name={this.props.activity.name} />
@@ -42,10 +48,7 @@ export default class ActivityCard extends React.Component {
             <Body>
 
           
-            {
-              this.props.activity.positiveGoal > 0 &&
-              <Text style={{color: "#a7a7a7", fontSize: 12}}>Your goal today {this.props.activity.positiveGoal} </Text>
-            }
+            
              
             
             
