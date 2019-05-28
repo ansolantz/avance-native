@@ -29,18 +29,27 @@ export default class ActivityCard extends React.Component {
 
             {
               this.props.activity.imageType === 'emoji' &&
-              <Emoji style={{ flex: 1, fontSize: 100, textAlign: 'center' }} name={this.props.activity.name} />
+              <Emoji style={{ flex: 1, fontSize: 90, textAlign: 'center' }} name={this.props.activity.name} />
             }
             {
               this.props.activity.imageType === 'icon' &&
-              <Icon style={{ flex: 1, fontSize: 78, textAlign: 'center', color: '#09bac9' }}
+              <Icon style={{ flex: 1, fontSize: 100, textAlign: 'center', color: '#09bac9' }}
                 type={this.props.activity.type}
                 name={this.props.activity.name} />
             }
           </CardItem>
           <CardItem style={{ paddingVertical: 0 }}>
             <Body>
-              <Text>2/8 today</Text>
+
+          
+            {
+              this.props.activity.positiveGoal > 0 &&
+              <Text style={{color: "#a7a7a7", fontSize: 12}}>Your goal today {this.props.activity.positiveGoal} </Text>
+            }
+             
+            
+            
+              
             </Body>
           </CardItem>
         </Card>

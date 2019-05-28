@@ -34,7 +34,7 @@ export default class RegisterScreen extends React.Component {
     this.activities = [
       {
         activityName: 'drink-water',
-        positiveGoal: 15,
+        positiveGoal: 4,
         name: 'local-drink',
         type: 'MaterialIcons',
         imageType: 'icon'
@@ -50,9 +50,9 @@ export default class RegisterScreen extends React.Component {
       {
         activityName: 'drink-soda',
         positiveGoal: -1,
-        name: 'cup',
+        name: 'glass_of_milk',
         type: 'Entypo',
-        imageType: 'icon'
+        imageType: 'emoji'
       },
       {
         activityName: 'barcode-scan',
@@ -66,7 +66,7 @@ export default class RegisterScreen extends React.Component {
         positiveGoal: -1,
         name: 'camera',
         type: 'Entypo',
-        imageType: 'icon'
+        imageType: 'emoji'
       }
     ]
   }
@@ -131,7 +131,6 @@ export default class RegisterScreen extends React.Component {
 
               <Button primary block onPress={() => {
                 this.setModalVisible(!this.state.modalVisible);
-
               }}>
                 <Text>Close</Text></Button>
             </View>

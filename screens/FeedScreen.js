@@ -26,24 +26,27 @@ import FeedCard from '../components/FeedCard';
 export default class FeedScreen extends Component {
   constructor(props) {
     super(props);
+
+
     this.state = {
-      _id: '',
-      activityName: '',
-      feedbackType: '',
-      category: '',
-      image: '',
-      title: '',
-      text: '',
-      date: ''
+      allFeedsArray: []
+      // _id: '',
+      // activityName: '',
+      // feedbackType: '',
+      // category: '',
+      // image: '',
+      // title: '',
+      // text: '',
+      // date: ''
     };
 
-    // --- Listen to focus events
-    // --- https://reactnavigation.org/docs/en/navigation-prop.html
-    this.props.navigation.addListener(
-      'willFocus', payload => {
-        this.getFeedData()
-      }
-    );
+    // // --- Listen to focus events
+    // // --- https://reactnavigation.org/docs/en/navigation-prop.html
+    // this.props.navigation.addListener(
+    //   'willFocus', payload => {
+    //     this.getFeedData()
+    //   }
+    // );
 
   }
 
@@ -51,28 +54,40 @@ export default class FeedScreen extends Component {
     console.log('Getting the user feed')
     auth.getUserFeed()
       .then(feed => {
-        console.log(feed)
-        this.setState({
-          _id: feed._id,
-          activityName: feed.activityName,
-          feedbackType: feed.feedbackType,
-          category: feed.category,
-          image: feed.image,
-          title: feed.title,
-          text: feed.text,
-          date: feed.date
-        });
+        console.log("Downloaded feed: ", feed)
+
+        this.setState({ allFeedsArray: feed })
+        // this.setState({
+        //   _id: feed._id,
+        //   activityName: feed.activityName,
+        //   feedbackType: feed.feedbackType,
+        //   category: feed.category,
+        //   image: feed.image,
+        //   title: feed.title,
+        //   text: feed.text,
+        //   date: feed.date
+        // });
       })
       .catch((err) => console.log(err))
 
     console.log("State: ", this.state)
   }
 
+  componentDidMount() {
+    //  fetch the data from API befor initial render
+
+    this.getFeedData()
+
+  }
+
   static navigationOptions = {
     header: null,
     title: null
   };
+
+
   render() {
+    const { allFeedsArray } = this.state;
     return (
 
       <Container>
@@ -86,7 +101,14 @@ export default class FeedScreen extends Component {
 
         <Content padder>
 
-
+          {
+            allFeedsArray.map((feedElement, index) => {
+              return (
+                <FeedCard key={feedElement._id}
+                  title={feedElement.title} />
+              )
+            })
+          }
 
           <Card style={styles.mb}>
             <CardItem>

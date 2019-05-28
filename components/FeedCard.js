@@ -13,8 +13,11 @@ import {
   Body,
   Right,
 } from "native-base";
+import { images } from '../assets/images/images'
 
 export default class FeedCard extends React.Component {
+  imageReq = require('../assets/images/hydration.jpg');
+
   render() {
 
     return (
@@ -23,8 +26,8 @@ export default class FeedCard extends React.Component {
           <Left>
             <Thumbnail small source={require('../assets/images/check-ok.png')} />
             <Body>
-              <Text>This is the feed card</Text>
-              <Text note>Hidration</Text>
+              <Text>{this.props.title} </Text>
+              <Text note>{this.props.feedbackType}</Text>
             </Body>
           </Left>
         </CardItem>
@@ -41,10 +44,8 @@ export default class FeedCard extends React.Component {
         </CardItem>
         <CardItem style={{ paddingVertical: 0 }}>
           <Body>
-            <Text note>You started your day with a glass of wather</Text>
-            <Text note>
-              <Icon style={styles.small} active name="thumbs-up" /> Keep up the good job!
-                </Text>
+            <Text note>{this.props.text}</Text>
+
           </Body>
         </CardItem>
       </Card>
