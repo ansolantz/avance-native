@@ -23,7 +23,7 @@ export default class PedometerScreen extends React.Component {
 
 
 
-  goal = 1000;
+  goal = 10000;
   activityName = 'walk';
 
   componentDidMount() {
@@ -67,7 +67,7 @@ export default class PedometerScreen extends React.Component {
         if (this.state.pastStepCount >= this.goal) {
           console.log("Add steps to db")
 
-          //Adding to activity db
+          // --- Adding to activity db
           //auth.addActivity(this.activityName, { steps: this.state.pastStepCount });
           this.setState({
             activityName: this.activityName,
@@ -78,8 +78,8 @@ export default class PedometerScreen extends React.Component {
             text: `You walked ${this.state.pastStepCount} steps today!`
           });
           console.log(this.state)
-          //Adding to feed db
-          auth.addToFeed(this.state)
+          // --- Adding to feed db
+          //auth.addToFeed(this.state)
           this.setModalVisible(true);
         }
       },
@@ -102,7 +102,8 @@ export default class PedometerScreen extends React.Component {
         <Text>
           Your daily goal is {this.goal}
         </Text>
-        <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
+        <Text> </Text>
+        {/* <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text> */}
 
         <CircularProgress
           percent={this.state.pastStepCount / this.goal * 100} currentCount={this.state.pastStepCount}
@@ -117,7 +118,7 @@ export default class PedometerScreen extends React.Component {
           }}>
 
           <View style={styles.modalContent}>
-            <H2>Good jobb!</H2>
+            <H2>Good job!</H2>
             <Text>You walked {this.state.pastStepCount} today.</Text>
             <Text>(Your goal: {this.goal})</Text>
             <Text>Activity {this.state.activityName} accomplished!</Text>
