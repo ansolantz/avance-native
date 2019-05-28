@@ -4,7 +4,7 @@ import { Container, Header, Button, Title, Icon, Body, Content, Text, Left, Righ
 import { StyleSheet, Image } from "react-native";
 
 
-export default class RecommendationScreen extends Component {
+export default class VitaminScreen extends Component {
 
   static navigationOptions = {
     header: null,
@@ -22,19 +22,28 @@ export default class RecommendationScreen extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Hidration</Title>
+            <Title>Vitamin</Title>
           </Body>
           <Right />
         </Header>
 
         <Content padder>
           <Card style={styles.mb}>
+          <CardItem>
+                <Body>
+                <Text> <Icon style={styles.small} name="check-circle-o" type="FontAwesome" /> </Text>
+                <Text> <Icon style={styles.small} name="circle-o" type="FontAwesome" /> </Text>
+                <Text> <Icon style={styles.small} name="circle-o" type="FontAwesome" /> </Text>
+                <Text> <Icon style={styles.small} name="circle" type="FontAwesome" /></Text>
+                </Body>
+            
+            </CardItem>
             <CardItem>
               <Left>
-                <Thumbnail small source={require('../assets/images/water-icon.png')} />
+                <Thumbnail small source={require('../assets/images/apple-icon.png')} />
                 <Body>
-                  <Text>Did you know?</Text>
-                  <Text note>Hidration</Text>
+                  <Text>Fruit and vegetables?</Text>
+                  <Text note>Vitamin</Text>
                 </Body>
               </Left>
             </CardItem>
@@ -46,23 +55,20 @@ export default class RecommendationScreen extends Component {
                   height: 200,
                   flex: 1
                 }}
-                source={require('../assets/images/hydration.jpg')}
+                source={require('../assets/images/fruits.jpg')}
               />
             </CardItem>
             <CardItem style={{ paddingVertical: 0 }}>
               <Body>
-
                 <Text note>
                   <Icon style={styles.small} name="info" type="Octicons" />
-                  Your body depends on water to survive.
-                    You should drink water every day. Water is needed for overall good health.
-                  Most people have been told they should drink 8 glasses of water each day.
-                That is a reasonable goal.</Text>
+                  Fruits and vegetables contain many vitamins and minerals that are good for your health. 
+                  The general recommendation for fruit and vegetable intake is at least 400 grams per day.</Text>
               </Body>
             </CardItem>
           </Card>
-          <Button style={{ marginTop: 40 }} block primary onPress={() => this.props.navigation.navigate('RegisterScreen')}>
-            <Text>Start registering what you drink</Text>
+          <Button style={{ marginTop: 40 }} block primary onPress={() => this.props.navigation.navigate('Register')}>
+            <Text>Start eating more fruits</Text>
           </Button>
         </Content>
       </Container>
@@ -93,5 +99,9 @@ const styles = StyleSheet.create({
   small: {
     color: "#a7a7a7",
     fontSize: 12
+  },
+  small: {
+    color: "#a7a7a7",
+    fontSize: 22
   }
 });

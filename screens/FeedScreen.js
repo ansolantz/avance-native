@@ -40,13 +40,13 @@ export default class FeedScreen extends Component {
       // date: ''
     };
 
-    // // --- Listen to focus events
-    // // --- https://reactnavigation.org/docs/en/navigation-prop.html
-    // this.props.navigation.addListener(
-    //   'willFocus', payload => {
-    //     this.getFeedData()
-    //   }
-    // );
+    // --- Listen to focus events
+    // --- https://reactnavigation.org/docs/en/navigation-prop.html
+    this.props.navigation.addListener(
+      'willFocus', payload => {
+        this.getFeedData()
+      }
+    );
 
   }
 
@@ -73,12 +73,10 @@ export default class FeedScreen extends Component {
     console.log("State: ", this.state)
   }
 
-  componentDidMount() {
-    //  fetch the data from API befor initial render
-
-    this.getFeedData()
-
-  }
+  // componentDidMount() {
+  //   //  fetch the data from API befor initial render
+  //   this.getFeedData()
+  // }
 
   static navigationOptions = {
     header: null,
@@ -105,7 +103,7 @@ export default class FeedScreen extends Component {
             allFeedsArray.map((feedElement, index) => {
               return (
                 <FeedCard key={feedElement._id}
-                  title={feedElement.title} />
+                  {...feedElement} />
               )
             })
           }
@@ -128,7 +126,7 @@ export default class FeedScreen extends Component {
                   height: 200,
                   flex: 1
                 }}
-                source={require('../assets/images/hydration.jpg')}
+                source={require('../assets/images/water-glass.jpg')}
               />
             </CardItem>
             <CardItem style={{ paddingVertical: 0 }}>
@@ -147,8 +145,8 @@ export default class FeedScreen extends Component {
               <Left>
                 <Thumbnail small source={require('../assets/images/check-ok.png')} />
                 <Body>
-                  <Text>Walking goal acomplished!</Text>
-                  <Text note>Move</Text>
+                  <Text>First vitamin goal acomliched!</Text>
+                  <Text note>Vitamin</Text>
                 </Body>
               </Left>
             </CardItem>
@@ -160,12 +158,12 @@ export default class FeedScreen extends Component {
                   height: 200,
                   flex: 1
                 }}
-                source={require('../assets/images/walking.jpg')}
+                source={require('../assets/images/fruits.jpg')}
               />
             </CardItem>
             <CardItem style={{ paddingVertical: 0 }}>
               <Body>
-                <Text note>You walked x steps today!</Text>
+                <Text note>You ate a fruit every day</Text>
                 <Text note>
                   <Icon style={styles.small} active name="thumbs-up" /> Keep up the good jobb!
                 </Text>
