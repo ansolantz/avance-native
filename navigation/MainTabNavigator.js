@@ -10,8 +10,7 @@ import FeedScreen from '../screens/FeedScreen';
 import PedometerScreen from '../screens/PedometerScreen';
 import HydrationScreen from '../screens/HydrationScreen';
 import VitaminScreen from '../screens/VitaminScreen';
-
-
+import ImageRecognitionScreen from '../screens/ImageRecognitionScreen';
 
 
 
@@ -37,6 +36,7 @@ DashboardStack.navigationOptions = {
 const RegisterStack = createStackNavigator({
   Register: RegisterScreen,
   BarcodeScanner: BarcodeScannerScreen,
+  ImageRecognition: ImageRecognitionScreen,
 });
 
 RegisterStack.navigationOptions = {

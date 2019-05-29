@@ -65,7 +65,7 @@ export default class RegisterScreen extends React.Component {
         
       },
       {
-        activityName: 'add-photo',
+        activityName: 'image-recognition',
         positiveGoal: -1,
         name: require('../assets/images/photo.jpg'),
         type: 'MaterialIcons',
@@ -84,7 +84,10 @@ export default class RegisterScreen extends React.Component {
     console.log("activity", activity.activityName)
     if (activity.activityName === 'barcode-scan') {
       this.props.navigation.navigate('BarcodeScanner');
-    } else {
+    } else if (activity.activityName === 'image-recognition'){
+      this.props.navigation.navigate('ImageRecognition');
+    } 
+    else {
       auth.addActivity(activity.activityName, activity.positiveGoal, {});
       this.setState({ activityName: activity.activityName })
       this.setModalVisible(true);
@@ -137,7 +140,7 @@ export default class RegisterScreen extends React.Component {
             }}>
 
             <View style={styles.modalContent}>
-              <H2>Great!</H2>
+              <H2>Ok</H2>
               <Text>Activity {this.state.activityName} registered</Text>
 
               <Button primary block onPress={() => {
