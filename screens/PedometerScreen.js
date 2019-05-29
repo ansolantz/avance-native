@@ -68,7 +68,7 @@ export default class PedometerScreen extends React.Component {
           console.log("Add steps to db")
 
           // --- Adding to activity db
-          //auth.addActivity(this.activityName, { steps: this.state.pastStepCount });
+          auth.addActivity(this.activityName, { steps: this.state.pastStepCount });
           this.setState({
             activityName: this.activityName,
             feedbackType: 'positive',
@@ -79,7 +79,7 @@ export default class PedometerScreen extends React.Component {
           });
           console.log(this.state)
           // --- Adding to feed db
-          //auth.addToFeed(this.state)
+          auth.addToFeed(this.state)
           this.setModalVisible(true);
         }
       },

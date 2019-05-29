@@ -81,6 +81,12 @@ export default class ImageRecognitionScreen extends React.Component {
     })
   }
 
+  static navigationOptions = {
+    //header: null,
+    title: 'Image recognition'
+  };
+
+
   render() {
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
@@ -103,6 +109,7 @@ export default class ImageRecognitionScreen extends React.Component {
                 <Button
                   style={{
                     flex: 0.2,
+                    margin: 10,
                     alignSelf: 'flex-end',
                     alignItems: 'center',
                   }}
@@ -124,6 +131,7 @@ export default class ImageRecognitionScreen extends React.Component {
                 <Button
                   style={{
                     flex: 0.4,
+                    margin: 10,
                     alignSelf: 'flex-end',
                     alignItems: 'center',
                   }}
@@ -152,7 +160,7 @@ export default class ImageRecognitionScreen extends React.Component {
 
               <Image style={{ width: 200, height: 200 }} resizeMode='contain'
                 source={{ uri: this.state.uri }} />
-              <Button primary block onPress={() => {
+              <Button primary style={{ margin: 10 }} block onPress={() => {
                 this.setModalVisible(!this.state.modalVisible);
                 this.props.navigation.navigate('Register');
               }}>

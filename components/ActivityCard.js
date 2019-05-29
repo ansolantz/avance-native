@@ -17,30 +17,20 @@ import {
 export default class ActivityCard extends React.Component {
 
   render() {
-  
+
     return (
       <TouchableOpacity style={{ width: '46%', marginBottom: 15 }}
         onPress={() => this.props.handleActivityClick(this.props.activity)} >
-  
-        <Card >
+
+        <Card>
           <CardItem>
             <Body></Body>
           </CardItem>
-          <CardItem cardBody style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <CardItem cardBody style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
-          {
+            {
               this.props.activity.imageType === 'image' &&
-              <Thumbnail style={{ width: 140, height: 140, borderRadius: 70}} source={this.props.activity.name} />
-            }
-            {
-              this.props.activity.imageType === 'emoji' &&
-              <Emoji style={{ flex: 1, fontSize: 90, textAlign: 'center' }} name={this.props.activity.name} />
-            }
-            {
-              this.props.activity.imageType === 'icon' &&
-              <Icon style={{ flex: 1, fontSize: 100, textAlign: 'center', color: '#09bac9' }}
-                type={this.props.activity.type}
-                name={this.props.activity.name} />
+              <Thumbnail style={{ width: 140, height: 140, borderRadius: 70 }} source={this.props.activity.url} />
             }
           </CardItem>
           <CardItem style={{ paddingVertical: 0 }}>
