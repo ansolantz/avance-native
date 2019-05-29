@@ -14,7 +14,7 @@ import {
   Thumbnail,
   Left,
   Body,
-  Right, H2
+  Right, H2, H3
 } from "native-base";
 
 import ActivityCard from '../components/ActivityCard';
@@ -36,7 +36,7 @@ export default class RegisterScreen extends React.Component {
         activityName: 'drink-water',
         positiveGoal: 4,
         name: require('../assets/images/water-hydration.jpg'),
-        type: 'MaterialIcons',
+        type: '',
         imageType: 'image',
       },
       {
@@ -44,14 +44,21 @@ export default class RegisterScreen extends React.Component {
         negativeGoal: 5,
         positiveGoal: -1,
         name: require('../assets/images/coffee.jpg'),
-        type: 'MaterialIcons',
+        type: '',
         imageType: 'image',
       },
       {
         activityName: 'drink-soda',
         positiveGoal: -1,
         name: require('../assets/images/soda.jpg'),
-        type: 'MaterialIcons',
+        type: '',
+        imageType: 'image',
+      },
+      {
+        activityName: 'drink-beer',
+        positiveGoal: -1,
+        name: require('../assets/images/beer.jpg'),
+        type: '',
         imageType: 'image',
       },
       {
@@ -60,9 +67,7 @@ export default class RegisterScreen extends React.Component {
         name: require('../assets/images/barcode.jpg'),
         type: 'MaterialIcons',
         imageType: 'image',
-        
 
-        
       },
       {
         activityName: 'image-recognition',
@@ -70,7 +75,7 @@ export default class RegisterScreen extends React.Component {
         name: require('../assets/images/photo.jpg'),
         type: 'MaterialIcons',
         imageType: 'image',
-        
+
       }
     ]
   }
@@ -84,9 +89,9 @@ export default class RegisterScreen extends React.Component {
     console.log("activity", activity.activityName)
     if (activity.activityName === 'barcode-scan') {
       this.props.navigation.navigate('BarcodeScanner');
-    } else if (activity.activityName === 'image-recognition'){
+    } else if (activity.activityName === 'image-recognition') {
       this.props.navigation.navigate('ImageRecognition');
-    } 
+    }
     else {
       auth.addActivity(activity.activityName, activity.positiveGoal, {});
       this.setState({ activityName: activity.activityName })
@@ -111,18 +116,14 @@ export default class RegisterScreen extends React.Component {
         </Header>
 
         <Content padder>
-
-     
-          <Text style={{color: "#a7a7a7", fontSize: 18}}>Your goal today is to drink 
-            { this.activities[0].positiveGoal} glasses of water</Text>
-          
-          
+          <H3 style={{ margin: 8 }}>Hydration</H3>
+          <Text style={{ margin: 8, color: "#777777", fontSize: 16 }}>Your goal today is to
+            drink {this.activities[0].positiveGoal} glasses of water</Text>
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-
             {
               this.activities.map((activityElement, index) => {
                 return (
-                
+
                   <ActivityCard key={activityElement.activityName}
                     handleActivityClick={this.handleActivityClick}
                     activity={activityElement} />
