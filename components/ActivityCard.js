@@ -30,7 +30,6 @@ export default class ActivityCard extends React.Component {
 
           {
               this.props.activity.imageType === 'image' &&
-
               <Thumbnail style={{ width: 140, height: 140, borderRadius: 70}} source={this.props.activity.name} />
             }
             {
@@ -46,13 +45,6 @@ export default class ActivityCard extends React.Component {
           </CardItem>
           <CardItem style={{ paddingVertical: 0 }}>
             <Body>
-
-          
-            
-             
-            
-            
-              
             </Body>
           </CardItem>
         </Card>

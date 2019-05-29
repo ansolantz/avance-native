@@ -101,7 +101,7 @@ export default class BarcodeScannerScreen extends Component {
     const activityName = 'barcode-scan'
     //alert(`Bar code with type ${type} and data ${barcodeNumber} has been scanned!`);
 
-    auth.addActivity(activityName, { barcode: barcodeNumber });
+    auth.addActivity(activityName, 0, { barcode: barcodeNumber });
 
     apiService.getBarcodeInfo(barcodeNumber)
       .then(response => {
