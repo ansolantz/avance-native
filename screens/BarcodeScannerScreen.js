@@ -79,7 +79,7 @@ export default class BarcodeScannerScreen extends Component {
             {/* <Text>{`Category: ${this.state.barcodeInfo.category}`}</Text> */}
             <Text>{`Nurition facts: ${this.state.barcodeInfo.nutrition_facts}`}</Text>
             <Image style={{ width: 200, height: 200 }} resizeMode='contain' source={{ uri: this.state.barcodeInfo.images[0] }} />
-            <Button primary block onPress={() => {
+            <Button primary block style={{ margin: 10 }} onPress={() => {
               this.setModalVisible(!this.state.modalVisible);
               this.props.navigation.navigate('Register');
             }}>

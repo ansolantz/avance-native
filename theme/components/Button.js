@@ -390,8 +390,7 @@ export default (variables /*: * */ = variable) => {
     shadowOpacity: platformStyle === "material" ? 0.2 : undefined,
     shadowRadius: platformStyle === "material" ? 1.2 : undefined,
     alignItems: "center",
-    justifyContent: "space-between",
-    margin: 10
+    justifyContent: "space-between"
   };
   return buttonTheme;
 };

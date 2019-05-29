@@ -57,26 +57,12 @@ export default class FeedScreen extends Component {
         console.log("Downloaded feed: ", feed)
 
         this.setState({ allFeedsArray: feed })
-        // this.setState({
-        //   _id: feed._id,
-        //   activityName: feed.activityName,
-        //   feedbackType: feed.feedbackType,
-        //   category: feed.category,
-        //   image: feed.image,
-        //   title: feed.title,
-        //   text: feed.text,
-        //   date: feed.date
-        // });
+
       })
       .catch((err) => console.log(err))
 
     console.log("State: ", this.state)
   }
-
-  // componentDidMount() {
-  //   //  fetch the data from API befor initial render
-  //   this.getFeedData()
-  // }
 
   static navigationOptions = {
     header: null,
@@ -113,38 +99,6 @@ export default class FeedScreen extends Component {
               <Left>
                 <Thumbnail small source={require('../assets/images/check-ok.png')} />
                 <Body>
-                  <Text>Congrats you reached your first goal</Text>
-                  <Text note>Hidration</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image
-                style={{
-                  resizeMode: "cover",
-                  width: null,
-                  height: 200,
-                  flex: 1
-                }}
-                source={require('../assets/images/water-glass.jpg')}
-              />
-            </CardItem>
-            <CardItem style={{ paddingVertical: 0 }}>
-              <Body>
-                <Text note>You started your day with a glass of wather</Text>
-                <Text note>
-                  <Icon style={styles.small} active name="thumbs-up" /> Keep up the good job!
-                </Text>
-              </Body>
-            </CardItem>
-          </Card>
-
-
-          <Card style={styles.mb}>
-            <CardItem>
-              <Left>
-                <Thumbnail small source={require('../assets/images/check-ok.png')} />
-                <Body>
                   <Text>First vitamin goal acomliched!</Text>
                   <Text note>Vitamin</Text>
                 </Body>
@@ -171,7 +125,36 @@ export default class FeedScreen extends Component {
             </CardItem>
           </Card>
 
-
+          <Card style={styles.mb}>
+            <CardItem>
+              <Left>
+                <Thumbnail small source={require('../assets/images/check-ok.png')} />
+                <Body>
+                  <Text>Congrats you reached your first goal</Text>
+                  <Text note>Hidration</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image
+                style={{
+                  resizeMode: "cover",
+                  width: null,
+                  height: 200,
+                  flex: 1
+                }}
+                source={require('../assets/images/water-glass.jpg')}
+              />
+            </CardItem>
+            <CardItem style={{ paddingVertical: 0 }}>
+              <Body>
+                <Text note>You started your day with a glass of wather</Text>
+                <Text note>
+                  <Icon style={styles.small} active name="thumbs-up" /> Keep up the good job!
+                </Text>
+              </Body>
+            </CardItem>
+          </Card>
 
         </Content>
       </Container>

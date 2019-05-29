@@ -13,8 +13,8 @@ import {
   Grid, Row, Col,
   Thumbnail,
   Left,
-  Body,
-  Right, H2
+  Body, Segment,
+  Right, H2, H3
 } from "native-base";
 
 import ActivityCard from '../components/ActivityCard';
@@ -24,56 +24,99 @@ import auth from '../lib/auth-services'
 
 
 export default class RegisterScreen extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
       modalVisible: false,
-      activityName: ''
+      activityName: '',
+      seg: 1
     };
 
-    this.activities = [
+
+    this.hydrationActivities = [
       {
         activityName: 'drink-water',
         positiveGoal: 4,
-        name: require('../assets/images/water-hydration.jpg'),
-        type: 'MaterialIcons',
+        url: require('../assets/images/water-hydration.jpg'),
         imageType: 'image',
       },
       {
         activityName: 'drink-coffee',
         negativeGoal: 5,
         positiveGoal: -1,
-        name: require('../assets/images/coffee.jpg'),
-        type: 'MaterialIcons',
+        url: require('../assets/images/coffee.jpg'),
         imageType: 'image',
       },
       {
         activityName: 'drink-soda',
         positiveGoal: -1,
-        name: require('../assets/images/soda.jpg'),
-        type: 'MaterialIcons',
+        url: require('../assets/images/soda.jpg'),
+        imageType: 'image',
+      },
+      {
+        activityName: 'drink-beer',
+        positiveGoal: -1,
+        url: require('../assets/images/beer.jpg'),
         imageType: 'image',
       },
       {
         activityName: 'barcode-scan',
         positiveGoal: -1,
-        name: require('../assets/images/barcode.jpg'),
-        type: 'MaterialIcons',
+        url: require('../assets/images/barcode.jpg'),
         imageType: 'image',
-        
 
-        
       },
       {
         activityName: 'image-recognition',
         positiveGoal: -1,
-        name: require('../assets/images/photo.jpg'),
-        type: 'MaterialIcons',
+        url: require('../assets/images/photo.jpg'),
         imageType: 'image',
-        
+
+      }
+    ]
+
+
+    this.vitaminActivities = [
+      {
+        activityName: 'frut-banana',
+        positiveGoal: 1,
+        url: require('../assets/images/banana.jpg'),
+        imageType: 'image',
+      },
+      {
+        activityName: 'fruit-orange',
+        positiveGoal: 2,
+        url: require('../assets/images/orange.jpg'),
+        imageType: 'image',
+      },
+      {
+        activityName: 'fruit-apple',
+        positiveGoal: 2,
+        url: require('../assets/images/red-apple.jpg'),
+        imageType: 'image',
+      },
+      {
+        activityName: 'fruit-pear',
+        positiveGoal: 2,
+        url: require('../assets/images/pear.jpg'),
+        imageType: 'image',
+      },
+      {
+        activityName: 'fruit-strawberries',
+        positiveGoal: 2,
+        url: require('../assets/images/strawberries.jpg'),
+        imageType: 'image',
+      },
+      {
+        activityName: 'image-recognition',
+        positiveGoal: 0,
+        url: require('../assets/images/photo.jpg'),
+        imageType: 'image',
       }
     ]
   }
+
+
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
@@ -84,9 +127,9 @@ export default class RegisterScreen extends React.Component {
     console.log("activity", activity.activityName)
     if (activity.activityName === 'barcode-scan') {
       this.props.navigation.navigate('BarcodeScanner');
-    } else if (activity.activityName === 'image-recognition'){
+    } else if (activity.activityName === 'image-recognition') {
       this.props.navigation.navigate('ImageRecognition');
-    } 
+    }
     else {
       auth.addActivity(activity.activityName, activity.positiveGoal, {});
       this.setState({ activityName: activity.activityName })
@@ -101,35 +144,52 @@ export default class RegisterScreen extends React.Component {
   };
 
   render() {
+    if (this.state.seg === 1) {
+      activities = this.hydrationActivities;
+    } else if (this.state.seg === 2) {
+      activities = this.vitaminActivities;
+    }
     return (
       <Container>
-
-        <Header>
+        <Header hasSegment>
+          <Left>
+          </Left>
           <Body>
             <Title>Register an activity</Title>
           </Body>
+          <Right>
+          </Right>
         </Header>
+        <Segment>
+          <Button
+            first style={{ margin: 0, padding: 0 }}
+            active={this.state.seg === 1 ? true : false}
+            onPress={() => this.setState({ seg: 1 })}
+          >
+            <Text>Hydration</Text>
+          </Button>
+          <Button last style={{ margin: 0, padding: 0 }}
+            active={this.state.seg === 2 ? true : false}
+            onPress={() => this.setState({ seg: 2 })}
+          >
+            <Text>Vitamin</Text>
+          </Button>
+        </Segment>
 
         <Content padder>
+          {this.state.seg === 1 && <Text style={{ margin: 8, color: "#777777", fontSize: 16 }}>Your goal today is to
+            drink {this.hydrationActivities[0].positiveGoal} glasses of water</Text>}
 
-     
-          <Text style={{color: "#a7a7a7", fontSize: 18}}>Your goal today is to drink 
-            { this.activities[0].positiveGoal} glasses of water</Text>
-          
-          
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-
             {
-              this.activities.map((activityElement, index) => {
+              activities.map((activityElement, index) => {
                 return (
-                
                   <ActivityCard key={activityElement.activityName}
                     handleActivityClick={this.handleActivityClick}
                     activity={activityElement} />
                 )
               })
             }
-
           </View>
 
           <Modal animationType="slide"
