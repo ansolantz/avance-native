@@ -1,9 +1,10 @@
 import React from 'react';
 import { GOOGLE_KEY } from 'react-native-dotenv';
-import { Text, View, TouchableOpacity, Alert } from 'react-native';
+import { View, TouchableOpacity, Alert } from 'react-native';
 import { Camera, Permissions } from 'expo';
+import { Button, Text, Container, Content, H1, H2 } from 'native-base';
 import vision from 'react-cloud-vision-api';
-import auth from '../lib/auth-services'
+import auth from '../lib/auth-services';
 
 export default class ImageRecognitionScreen extends React.Component {
   state = {
@@ -21,7 +22,7 @@ export default class ImageRecognitionScreen extends React.Component {
 
   snap = async () => {
     if (this.camera) {
-      let photo = await this.camera.takePictureAsync({base64: true, quality: 0.5});
+      let photo = await this.camera.takePictureAsync({ base64: true, quality: 0.5 });
 
       console.log(photo.base64);
       this.sendImage(photo.base64);
@@ -30,6 +31,8 @@ export default class ImageRecognitionScreen extends React.Component {
 
   //-- Sending photo to google
   // Using plugin -- https://github.com/vladimir2492/react-cloud-vision-api#readme
+  // Help src -- https://medium.com/@mlapeter/using-google-cloud-vision-with-expo-and-react-native-7d18991da1dd
+
   sendImage(base64Img) {
     vision.init({ auth: GOOGLE_KEY })
     const req = new vision.Request({
@@ -56,8 +59,10 @@ export default class ImageRecognitionScreen extends React.Component {
       const activityName = 'image-recognition'
       //alert(`Bar code with type ${type} and data ${barcodeNumber} has been scanned!`);
       console.log(`will add recognized image ${res.responses[0].labelAnnotations[0].description}`);
+
+      // -- Adding image and label to db
       auth.addActivity(activityName, 0, { imageLabel: res.responses[0].labelAnnotations[0].description, ibase64Img: ".. img.." });
-  
+
     }, (e) => {
       console.log('Error: ', e)
     })
@@ -79,9 +84,9 @@ export default class ImageRecognitionScreen extends React.Component {
                 backgroundColor: 'transparent',
                 flexDirection: 'row',
               }}>
-              <TouchableOpacity
+              <Button
                 style={{
-                  flex: 0.1,
+                  flex: 0.2,
                   alignSelf: 'flex-end',
                   alignItems: 'center',
                 }}
@@ -94,24 +99,24 @@ export default class ImageRecognitionScreen extends React.Component {
                 }}>
 
                 <Text
-                  style={{ fontSize: 18, marginBottom: 10, color: 'white' }}>
+                  style={{ fontSize: 18, color: 'white' }}>
                   {' '}Flip{' '}
                 </Text>
-              </TouchableOpacity>
+              </Button>
 
-              <TouchableOpacity
+              <Button
                 style={{
-                  flex: 0.1,
+                  flex: 0.4,
                   alignSelf: 'flex-end',
                   alignItems: 'center',
                 }}
                 onPress={() => this.snap()}>
 
                 <Text
-                  style={{ fontSize: 18, marginBottom: 10, color: 'white' }}>
+                  style={{ fontSize: 18, color: 'white' }}>
                   {' '} Take Photo {' '}
                 </Text>
-              </TouchableOpacity>
+              </Button>
             </View>
           </Camera>
         </View>
