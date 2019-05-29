@@ -3,8 +3,6 @@ import SignupScreen from '../screens/onboarding/SignupScreen';
 import LoginScreen from '../screens/onboarding/LoginScreen';
 import AuthLoadingScreen from '../screens/onboarding/AuthLoadingScreen';
 import SplashScreen from '../screens/onboarding/SplashScreen';
-
-
 import { createSwitchNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';

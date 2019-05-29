@@ -13,12 +13,24 @@ import {
   Body,
   Right,
 } from "native-base";
-import { images } from '../assets/images/images'
+
 
 export default class FeedCard extends React.Component {
-  imageReq = require('../assets/images/hydration.jpg');
+
 
   render() {
+    let imageReq;
+
+    console.log("activity name", this.props.activityName)
+    if (this.props.activityName === 'drink-water') {
+      imageReq = require('../assets/images/hydration.jpg');
+    } else if (this.props.activityName === 'walk') {
+      imageReq = require('../assets/images/walking.jpg');
+    } else if (this.props.activityName === 'eat-fruits') {
+      imageReq = require('../assets/images/fruits.jpg');
+    } else {
+      imageReq = require('../assets/images/standard.jpg');
+    }
 
     return (
       <Card style={styles.mb}>
@@ -27,7 +39,7 @@ export default class FeedCard extends React.Component {
             <Thumbnail small source={require('../assets/images/check-ok.png')} />
             <Body>
               <Text>{this.props.title} </Text>
-              <Text note>{this.props.feedbackType}</Text>
+              <Text note>{this.props.category}</Text>
             </Body>
           </Left>
         </CardItem>
@@ -39,7 +51,7 @@ export default class FeedCard extends React.Component {
               height: 200,
               flex: 1
             }}
-            source={require('../assets/images/hydration.jpg')}
+            source={imageReq}
           />
         </CardItem>
         <CardItem style={{ paddingVertical: 0 }}>

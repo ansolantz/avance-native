@@ -35,38 +35,42 @@ export default class RegisterScreen extends React.Component {
       {
         activityName: 'drink-water',
         positiveGoal: 4,
-        name: 'local-drink',
+        name: require('../assets/images/water-hydration.jpg'),
         type: 'MaterialIcons',
-        imageType: 'icon'
+        imageType: 'image',
       },
       {
-        activityName: 'drink-coffe',
+        activityName: 'drink-coffee',
         negativeGoal: 5,
         positiveGoal: -1,
-        name: 'coffee',
-        type: 'FontAwesome',
-        imageType: 'emoji'
+        name: require('../assets/images/coffee.jpg'),
+        type: 'MaterialIcons',
+        imageType: 'image',
       },
       {
         activityName: 'drink-soda',
         positiveGoal: -1,
-        name: 'glass_of_milk',
-        type: 'Entypo',
-        imageType: 'emoji'
+        name: require('../assets/images/soda.jpg'),
+        type: 'MaterialIcons',
+        imageType: 'image',
       },
       {
         activityName: 'barcode-scan',
         positiveGoal: -1,
-        name: 'barcode-scan',
-        type: 'MaterialCommunityIcons',
-        imageType: 'icon'
+        name: require('../assets/images/barcode.jpg'),
+        type: 'MaterialIcons',
+        imageType: 'image',
+        
+
+        
       },
       {
         activityName: 'add-photo',
         positiveGoal: -1,
-        name: 'camera',
-        type: 'Entypo',
-        imageType: 'emoji'
+        name: require('../assets/images/photo.jpg'),
+        type: 'MaterialIcons',
+        imageType: 'image',
+        
       }
     ]
   }
@@ -104,11 +108,18 @@ export default class RegisterScreen extends React.Component {
         </Header>
 
         <Content padder>
+
+     
+          <Text style={{color: "#a7a7a7", fontSize: 18}}>Your goal today is to drink 
+            { this.activities[0].positiveGoal} glasses of water</Text>
+          
+          
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap' }}>
 
             {
               this.activities.map((activityElement, index) => {
                 return (
+                
                   <ActivityCard key={activityElement.activityName}
                     handleActivityClick={this.handleActivityClick}
                     activity={activityElement} />
