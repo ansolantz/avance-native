@@ -102,7 +102,6 @@ export default class PedometerScreen extends React.Component {
   render() {
     return (
       <Container>
-
         <Header>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
@@ -114,9 +113,7 @@ export default class PedometerScreen extends React.Component {
           </Body>
           <Right />
         </Header>
-
         <Content padder>
-
           <View style={styles.container}>
             <Text style={{ fontSize: 20, margin: 5 }}>
               Your steps today:</Text>
@@ -131,7 +128,6 @@ export default class PedometerScreen extends React.Component {
             <CircularProgress
               percent={this.state.pastStepCount / this.goal * 100} currentCount={this.state.pastStepCount}
               bgRingWidth={15} progressRingWidth={15} goal={this.goal}></CircularProgress>
-
 
             <Modal animationType="slide"
               transparent={true}
@@ -153,7 +149,6 @@ export default class PedometerScreen extends React.Component {
                   <Text>Close</Text></Button>
               </View>
             </Modal>
-
           </View>
         </Content>
       </Container>

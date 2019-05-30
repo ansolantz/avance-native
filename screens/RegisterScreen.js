@@ -42,20 +42,22 @@ export default class RegisterScreen extends React.Component {
       },
       {
         activityName: 'drink-coffee',
-        negativeGoal: 5,
         positiveGoal: -1,
+        negativeGoal: 5,
         url: require('../assets/images/coffee.jpg'),
         imageType: 'image',
       },
       {
         activityName: 'drink-soda',
         positiveGoal: -1,
+        negativeGoal: 2,
         url: require('../assets/images/soda.jpg'),
         imageType: 'image',
       },
       {
         activityName: 'drink-beer',
         positiveGoal: -1,
+        negativeGoal: 3,
         url: require('../assets/images/beer.jpg'),
         imageType: 'image',
       },
@@ -75,43 +77,48 @@ export default class RegisterScreen extends React.Component {
       }
     ]
 
-
     this.vitaminActivities = [
       {
-        activityName: 'frut-banana',
-        positiveGoal: 1,
+        activityName: 'eat-fruit',
+        positiveGoal: 2,
         url: require('../assets/images/banana.jpg'),
         imageType: 'image',
+        data: { Type: 'banana'},
       },
       {
-        activityName: 'fruit-orange',
+        activityName: 'eat-fruit',
         positiveGoal: 2,
         url: require('../assets/images/orange.jpg'),
         imageType: 'image',
+        data: { Type: 'orange'},
       },
       {
-        activityName: 'fruit-apple',
+        activityName: 'eat-fruit',
         positiveGoal: 2,
         url: require('../assets/images/red-apple.jpg'),
         imageType: 'image',
+        data: { Type: 'red-apple'},
       },
       {
-        activityName: 'fruit-pear',
+        activityName: 'eat-fruit',
         positiveGoal: 2,
         url: require('../assets/images/pear.jpg'),
         imageType: 'image',
+        data: { Type: 'pear'},
       },
       {
-        activityName: 'fruit-strawberries',
+        activityName: 'eat-fruit',
         positiveGoal: 2,
         url: require('../assets/images/strawberries.jpg'),
         imageType: 'image',
+        data: { Type: 'strawberries'},
       },
       {
         activityName: 'image-recognition',
         positiveGoal: 0,
         url: require('../assets/images/photo.jpg'),
         imageType: 'image',
+        data: {},
       }
     ]
   }
@@ -131,7 +138,7 @@ export default class RegisterScreen extends React.Component {
       this.props.navigation.navigate('ImageRecognition');
     }
     else {
-      auth.addActivity(activity.activityName, activity.positiveGoal, {});
+      auth.addActivity(activity.activityName, activity.positiveGoal, activity.negativeGoal, {});
       this.setState({ activityName: activity.activityName })
       this.setModalVisible(true);
     }
@@ -179,12 +186,14 @@ export default class RegisterScreen extends React.Component {
         <Content padder>
           {this.state.seg === 1 && <Text style={{ margin: 8, color: "#777777", fontSize: 16 }}>Your goal today is to
             drink {this.hydrationActivities[0].positiveGoal} glasses of water</Text>}
+          {this.state.seg === 2 && <Text style={{ margin: 8, color: "#777777", fontSize: 16 }}>Your goal today is to
+            eat {this.vitaminActivities[0].positiveGoal} fruits.</Text>}
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', flexWrap: 'wrap' }}>
             {
               activities.map((activityElement, index) => {
                 return (
-                  <ActivityCard key={activityElement.activityName}
+                  <ActivityCard key={index}
                     handleActivityClick={this.handleActivityClick}
                     activity={activityElement} />
                 )
@@ -202,7 +211,6 @@ export default class RegisterScreen extends React.Component {
             <View style={styles.modalContent}>
               <H2>Ok</H2>
               <Text style={{ margin: 10 }}>Activity {this.state.activityName} registered</Text>
-
               <Button style={{ margin: 10 }} primary block onPress={() => {
                 this.setModalVisible(!this.state.modalVisible);
               }}>

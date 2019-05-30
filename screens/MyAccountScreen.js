@@ -85,7 +85,6 @@ export default class MyAccountScreen extends Component {
     title: null
   };
 
-
   render() {
     return (
       <Container>
@@ -119,25 +118,21 @@ export default class MyAccountScreen extends Component {
               <Input value={this.state.displayName}
                 onChangeText={(displayName) => this.setState({ displayName })} />
             </Item>
-
             <Item floatingLabel last>
               <Label>Email</Label>
               <Input keyboardType='email-address' value={this.state.email}
                 onChangeText={(email) => this.setState({ email })} />
             </Item>
-
             <Item floatingLabel last>
               <Label>Age</Label>
               <Input keyboardType='number-pad' value={this.state.age}
                 onChangeText={(age) => this.setState({ age })} />
             </Item>
-
             <Item floatingLabel last>
               <Label>Wight (kg)</Label>
               <Input keyboardType='number-pad' value={this.state.weight}
                 onChangeText={(weight) => this.setState({ weight })} />
             </Item>
-
             <Item floatingLabel last>
               <Label>Height (cm)</Label>
               <Input keyboardType='number-pad' value={this.state.height}
@@ -153,8 +148,6 @@ export default class MyAccountScreen extends Component {
               <Text>DELETE THIS USER</Text>
               <Icon name='ios-close-circle' />
             </Button>
-
-
           </Form>
         </Content>
       </Container>

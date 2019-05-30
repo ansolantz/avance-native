@@ -51,7 +51,6 @@ export default class HydrationScreen extends Component {
             </CardItem>
             <CardItem style={{ paddingVertical: 0 }}>
               <Body>
-
                 <Text note>
                   Your body depends on water to survive.
                     You should drink water every day. Water is needed for overall good health.

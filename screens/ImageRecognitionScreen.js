@@ -54,27 +54,17 @@ export default class ImageRecognitionScreen extends React.Component {
 
     vision.annotate(req).then((res) => {
       // handling response
-      // console.log(JSON.stringify(res.responses))
       const imageLabel = res.responses[0].labelAnnotations[0].description
-      // Alert.alert(
-      //   // -- Image recognition response
-      //   'Image detected as',
-      //   imageLabel,
-      //   [
-      //     { text: 'OK', onPress: () => console.log('OK Pressed') },
-      //   ],
-      //   { cancelable: false },
-      // );
+
       this.setState({ imageLabel: imageLabel })
       this.setModalVisible(true);
       this.setState({ buttonsVisible: false });
       const activityName = 'image-recognition'
-      //alert(`Bar code with type ${type} and data ${barcodeNumber} has been scanned!`);
       console.log(`will add recognized image ${imageLabel}`);
       console.log("State ", this.state)
 
       // -- Adding image and label to db
-      auth.addActivity(activityName, 0, { imageLabel: imageLabel, ibase64Img: ".. img.." });
+      auth.addActivity(activityName, 0, 0, { imageLabel: imageLabel, ibase64Img: ".. img.." });
 
     }, (e) => {
       console.log('Error: ', e)
@@ -145,15 +135,12 @@ export default class ImageRecognitionScreen extends React.Component {
             </View>
           </Camera>
 
-
-
           <Modal animationType="slide"
             transparent={true}
             visible={this.state.modalVisible}
             onRequestClose={() => {
               Alert.alert('Modal has been closed.');
             }}>
-
             <View style={styles.modalContent}>
               <H2>Image detected as</H2>
               <Text style={styles.modalText}>{this.state.imageLabel}</Text>
@@ -165,7 +152,6 @@ export default class ImageRecognitionScreen extends React.Component {
                 this.props.navigation.navigate('Register');
               }}>
                 <Text>OK</Text></Button>
-
             </View>
           </Modal>
         </View>

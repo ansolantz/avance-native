@@ -30,14 +30,6 @@ export default class FeedScreen extends Component {
 
     this.state = {
       allFeedsArray: []
-      // _id: '',
-      // activityName: '',
-      // feedbackType: '',
-      // category: '',
-      // image: '',
-      // title: '',
-      // text: '',
-      // date: ''
     };
 
     // --- Listen to focus events
@@ -55,12 +47,9 @@ export default class FeedScreen extends Component {
     auth.getUserFeed()
       .then(feed => {
         console.log("Downloaded feed: ", feed)
-
         this.setState({ allFeedsArray: feed })
-
       })
       .catch((err) => console.log(err))
-
     console.log("State: ", this.state)
   }
 
@@ -69,11 +58,9 @@ export default class FeedScreen extends Component {
     title: null
   };
 
-
   render() {
     const { allFeedsArray } = this.state;
     return (
-
       <Container>
         <Header>
           <Left />
@@ -82,9 +69,7 @@ export default class FeedScreen extends Component {
           </Body>
           <Right />
         </Header>
-
         <Content padder>
-
           {
             allFeedsArray.reverse().map((feedElement, index) => {
               return (
@@ -94,34 +79,6 @@ export default class FeedScreen extends Component {
             })
           }
           { allFeedsArray.length > 0 ? (<React.Fragment><Card style={styles.mb}>
-            <CardItem>
-              <Left>
-                <Thumbnail small source={require('../assets/images/warning.png')} />
-                <Body>
-                  <Text>Ops, take it easy!</Text>
-                  <Text note>Hydration</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image
-                style={{
-                  resizeMode: "cover",
-                  width: null,
-                  height: 200,
-                  flex: 1
-                }}
-                source={require('../assets/images/coffe-warning-1.jpg')}
-              />
-            </CardItem>
-            <CardItem style={{ paddingVertical: 0 }}>
-              <Body>
-                <Text note>You drank 6 cups of coffe yesterday!
-                  You may want to cut back on your coffee drinking. </Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card style={styles.mb}>
             <CardItem>
               <Left>
                 <Thumbnail small source={require('../assets/images/check-ok.png')} />

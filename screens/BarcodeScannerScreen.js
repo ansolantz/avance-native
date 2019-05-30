@@ -55,13 +55,6 @@ export default class BarcodeScannerScreen extends Component {
             onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
             style={StyleSheet.absoluteFillObject}
           />
-
-          {/* {scanned && (
-            <Button primary block
-              onPress={() => this.setState({ scanned: false })}>
-              <Text>Tap to Scan Again</Text>
-            </Button> 
-          )} */}
         </View>
 
         <Modal animationType="slide"
@@ -76,7 +69,6 @@ export default class BarcodeScannerScreen extends Component {
             <Text>{`Barcode: ${this.state.barcodeInfo.barcode_number}`}</Text>
             <Text>{`Barcode Type: ${this.state.barcodeInfo.barcode_type}`}</Text>
             <Text>{`Description: ${this.state.barcodeInfo.description.substr(1, 109)}...`}</Text>
-            {/* <Text>{`Category: ${this.state.barcodeInfo.category}`}</Text> */}
             <Text>{`Nurition facts: ${this.state.barcodeInfo.nutrition_facts}`}</Text>
             <Image style={{ width: 200, height: 200 }} resizeMode='contain' source={{ uri: this.state.barcodeInfo.images[0] }} />
             <Button primary block style={{ margin: 10 }} onPress={() => {
@@ -101,7 +93,7 @@ export default class BarcodeScannerScreen extends Component {
     const activityName = 'barcode-scan'
     //alert(`Bar code with type ${type} and data ${barcodeNumber} has been scanned!`);
 
-    auth.addActivity(activityName, 0, { barcode: barcodeNumber });
+    auth.addActivity(activityName, 0, 0, { barcode: barcodeNumber });
 
     apiService.getBarcodeInfo(barcodeNumber)
       .then(response => {

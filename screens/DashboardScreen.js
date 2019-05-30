@@ -5,14 +5,12 @@ import { Image, StyleSheet, View } from 'react-native';
 
 
 export default class DashboardScreen extends Component {
-
   static navigationOptions = {
     header: null,
     title: null
   };
   render() {
     return (
-
       <Container>
         <Content>
           <Header>
@@ -27,7 +25,6 @@ export default class DashboardScreen extends Component {
                 <View style={{ alignItems: 'left' }} >
                   <Text style={styles.text}>Hydration</Text>
                 </View>
-
               </ListItem>
             </LinearGradient>
 
@@ -68,7 +65,6 @@ export default class DashboardScreen extends Component {
           </List>
         </Content>
       </Container>
-
     );
   }
 }
