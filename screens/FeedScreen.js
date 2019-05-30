@@ -16,7 +16,7 @@ import {
   CardItem
 } from 'native-base';
 
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, View } from "react-native";
 import { LinearGradient } from 'expo';
 import auth from '../lib/auth-services'
 import FeedCard from '../components/FeedCard';
@@ -86,14 +86,41 @@ export default class FeedScreen extends Component {
         <Content padder>
 
           {
-            allFeedsArray.map((feedElement, index) => {
+            allFeedsArray.reverse().map((feedElement, index) => {
               return (
                 <FeedCard key={feedElement._id}
                   {...feedElement} />
               )
             })
           }
-
+          { allFeedsArray.length > 0 ? (<React.Fragment><Card style={styles.mb}>
+            <CardItem>
+              <Left>
+                <Thumbnail small source={require('../assets/images/warning.png')} />
+                <Body>
+                  <Text>Ops, take it easy!</Text>
+                  <Text note>Hydration</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image
+                style={{
+                  resizeMode: "cover",
+                  width: null,
+                  height: 200,
+                  flex: 1
+                }}
+                source={require('../assets/images/coffe-warning-1.jpg')}
+              />
+            </CardItem>
+            <CardItem style={{ paddingVertical: 0 }}>
+              <Body>
+                <Text note>You drank 6 cups of coffe yesterday!
+                  You may want to cut back on your coffee drinking. </Text>
+              </Body>
+            </CardItem>
+          </Card>
           <Card style={styles.mb}>
             <CardItem>
               <Left>
@@ -124,7 +151,6 @@ export default class FeedScreen extends Component {
               </Body>
             </CardItem>
           </Card>
-
           <Card style={styles.mb}>
             <CardItem>
               <Left>
@@ -154,8 +180,7 @@ export default class FeedScreen extends Component {
                 </Text>
               </Body>
             </CardItem>
-          </Card>
-
+          </Card></React.Fragment>) : <Text></Text>}
         </Content>
       </Container>
     );
