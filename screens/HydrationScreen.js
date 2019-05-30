@@ -61,7 +61,7 @@ export default class HydrationScreen extends Component {
             </CardItem>
           </Card>
           <Button style={{ marginTop: 40 }} block primary onPress={() => this.props.navigation.navigate('Register')}>
-            <Text>Start registering what you drink</Text>
+            <Text>Get started</Text>
           </Button>
         </Content>
       </Container>

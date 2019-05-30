@@ -36,7 +36,7 @@ export default class RegisterScreen extends React.Component {
     this.hydrationActivities = [
       {
         activityName: 'drink-water',
-        positiveGoal: 4,
+        positiveGoal: 8,
         url: require('../assets/images/water-hydration.jpg'),
         imageType: 'image',
       },

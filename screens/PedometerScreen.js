@@ -1,8 +1,10 @@
 import Expo from "expo";
 import React from "react";
 import { Pedometer } from "expo";
-import { StyleSheet, Text, View, Modal, Alert } from "react-native";
-import { Container, Header, Title, Content, Button, H2 } from "native-base";
+import { StyleSheet, View, Modal, Alert } from "react-native";
+import { Container, Header, Text, Title, Content, Button, H2, Left, Right, Body } from "native-base";
+
+
 import CircularProgress from "../components/CircularProgress";
 import auth from "../lib/auth-services";
 
@@ -92,46 +94,66 @@ export default class PedometerScreen extends React.Component {
 
   }
 
+  static navigationOptions = {
+    header: null,
+    title: null
+  };
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>
-          Steps taken in the last 24 hours: {this.state.pastStepCount}
-        </Text>
-        <Text>
-          Your daily goal is {this.goal}
-        </Text>
-        <Text> </Text>
-        {/* <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text> */}
+      <Container>
 
-        <CircularProgress
-          percent={this.state.pastStepCount / this.goal * 100} currentCount={this.state.pastStepCount}
-          bgRingWidth={15} progressRingWidth={15} goal={this.goal}></CircularProgress>
+        <Header>
+          <Left>
+          </Left>
+          <Body>
+            <Title>Step counter</Title>
+          </Body>
+          <Right />
+        </Header>
+
+        <Content padder>
+
+          <View style={styles.container}>
+            <Text style={{ fontSize: 20, margin: 5 }}>
+              Your steps today:</Text>
+            <Text style={{ fontSize: 20, color: '#007783', margin: 5, fontWeight: 'bold', }}> {this.state.pastStepCount}
+            </Text>
+            <Text style={{ fontSize: 20, margin: 5 }}>
+              Your daily goal is {this.goal} steps
+           </Text>
+            <Text style={{ fontSize: 20, margin: 5 }}> </Text>
+            {/* <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text> */}
+
+            <CircularProgress
+              percent={this.state.pastStepCount / this.goal * 100} currentCount={this.state.pastStepCount}
+              bgRingWidth={15} progressRingWidth={15} goal={this.goal}></CircularProgress>
 
 
-        <Modal animationType="slide"
-          transparent={true}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-          }}>
+            <Modal animationType="slide"
+              transparent={true}
+              visible={this.state.modalVisible}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+              }}>
 
-          <View style={styles.modalContent}>
-            <H2>Good job!</H2>
-            <Text>You walked {this.state.pastStepCount} today.</Text>
-            <Text>(Your goal: {this.goal})</Text>
-            <Text>Activity {this.state.activityName} accomplished!</Text>
+              <View style={styles.modalContent}>
+                <H2>Good job!</H2>
+                <Text>You walked {this.state.pastStepCount} today.</Text>
+                <Text>(Your goal: {this.goal})</Text>
+                <Text>Activity {this.state.activityName} accomplished!</Text>
 
-            <Button primary block onPress={() => {
-              this.setModalVisible(!this.state.modalVisible);
+                <Button primary block onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
 
-            }}>
-              <Text>Close</Text></Button>
+                }}>
+                  <Text>Close</Text></Button>
+              </View>
+            </Modal>
+
           </View>
-        </Modal>
-
-      </View>
+        </Content>
+      </Container>
     );
   }
 }

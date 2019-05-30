@@ -132,7 +132,7 @@ CircularProgress.defaultProps = {
   radius: 120,
   bgRingWidth: 10,
   progressRingWidth: 20,
-  ringColor: '#3498db',
+  ringColor: '#1ca6a9',
   ringBgColor: 'grey',
   textFontSize: 45,
   textFontWeight: 'bold',

@@ -1,4 +1,3 @@
-import { BACKEND_URL } from 'react-native-dotenv'
 import React, { Component } from 'react';
 
 import { Text, Container, Content, H1, Button, Header, Title, Card, CardItem, Thumbnail, Icon, Left, Right, Body } from 'native-base';
@@ -22,7 +21,7 @@ export default class SplashScreen extends Component {
           />
 
           <Button block primary onPress={() => this.props.navigation.navigate('SignupScreen')}>
-            <Text>Get started!</Text>
+            <Text>Get started</Text>
           </Button>
           <Text> </Text>
           <Button block primary onPress={() => this.props.navigation.navigate('LoginScreen')}>

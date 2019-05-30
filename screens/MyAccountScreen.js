@@ -90,11 +90,7 @@ export default class MyAccountScreen extends Component {
     return (
       <Container>
         <Header>
-          <Left>
-            <Button hasText transparent>
-              <Text>Back</Text>
-            </Button>
-          </Left>
+          <Left></Left>
           <Body>
             <Title>Your Profile</Title>
           </Body>
@@ -105,7 +101,6 @@ export default class MyAccountScreen extends Component {
           </Right>
         </Header>
         <Content padder>
-
           <List>
             <ListItem avatar>
               <Left>

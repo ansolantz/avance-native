@@ -12,9 +12,7 @@ export default class VitaminScreen extends Component {
   };
   render() {
     return (
-
       <Container>
-
         <Header>
           <Left>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
@@ -26,18 +24,8 @@ export default class VitaminScreen extends Component {
           </Body>
           <Right />
         </Header>
-
         <Content padder>
           <Card style={styles.mb}>
-          <CardItem>
-                <Body>
-                <Text> <Icon style={styles.small} name="check-circle-o" type="FontAwesome" /> </Text>
-                <Text> <Icon style={styles.small} name="circle-o" type="FontAwesome" /> </Text>
-                <Text> <Icon style={styles.small} name="circle-o" type="FontAwesome" /> </Text>
-                <Text> <Icon style={styles.small} name="circle" type="FontAwesome" /></Text>
-                </Body>
-            
-            </CardItem>
             <CardItem>
               <Left>
                 <Thumbnail small source={require('../assets/images/apple-icon.png')} />
@@ -62,13 +50,13 @@ export default class VitaminScreen extends Component {
               <Body>
                 <Text note>
                   <Icon style={styles.small} name="info" type="Octicons" />
-                  Fruits and vegetables contain many vitamins and minerals that are good for your health. 
+                  Fruits and vegetables contain many vitamins and minerals that are good for your health.
                   The general recommendation for fruit and vegetable intake is at least 400 grams per day.</Text>
               </Body>
             </CardItem>
           </Card>
           <Button style={{ marginTop: 40 }} block primary onPress={() => this.props.navigation.navigate('Register')}>
-            <Text>Start eating more fruits</Text>
+            <Text>Get started</Text>
           </Button>
         </Content>
       </Container>
