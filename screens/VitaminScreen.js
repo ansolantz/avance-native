@@ -20,7 +20,7 @@ export default class VitaminScreen extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Vitamin</Title>
+            <Title>Vitamins</Title>
           </Body>
           <Right />
         </Header>
@@ -31,7 +31,7 @@ export default class VitaminScreen extends Component {
                 <Thumbnail small source={require('../assets/images/apple-icon.png')} />
                 <Body>
                   <Text>Fruit and vegetables?</Text>
-                  <Text note>Vitamin</Text>
+                  <Text note>Vitamins</Text>
                 </Body>
               </Left>
             </CardItem>

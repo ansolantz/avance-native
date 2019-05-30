@@ -2,7 +2,7 @@ import Expo from "expo";
 import React from "react";
 import { Pedometer } from "expo";
 import { StyleSheet, View, Modal, Alert } from "react-native";
-import { Container, Header, Text, Title, Content, Button, H2, Left, Right, Body } from "native-base";
+import { Container, Header, Text, Title, Icon, Content, Button, H2, Left, Right, Body } from "native-base";
 
 
 import CircularProgress from "../components/CircularProgress";
@@ -105,6 +105,9 @@ export default class PedometerScreen extends React.Component {
 
         <Header>
           <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
           </Left>
           <Body>
             <Title>Step counter</Title>

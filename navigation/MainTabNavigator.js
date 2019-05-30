@@ -22,7 +22,7 @@ const DashboardStack = createStackNavigator({
 });
 
 DashboardStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: '   ',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       type='SimpleLineIcons'
@@ -40,9 +40,9 @@ const RegisterStack = createStackNavigator({
 });
 
 RegisterStack.navigationOptions = {
-  tabBarLabel: 'Register',
+  tabBarLabel: '     ',
   tabBarIcon: ({ focused }) => (
-     <TabBarIcon
+    <TabBarIcon
       type='MaterialIcons'
       focused={focused}
       name={Platform.OS === 'ios' ? 'add-circle-outline' : 'add-circle-outline'}
@@ -55,7 +55,7 @@ const FeedStack = createStackNavigator({
 });
 
 FeedStack.navigationOptions = {
-  tabBarLabel: 'Feed',
+  tabBarLabel: '   ',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       type='Octicons'
@@ -70,7 +70,7 @@ const MyAccountStack = createStackNavigator({
 });
 
 MyAccountStack.navigationOptions = {
-  tabBarLabel: 'My Account',
+  tabBarLabel: '   ',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       type='FontAwesome'

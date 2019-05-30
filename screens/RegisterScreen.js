@@ -201,9 +201,9 @@ export default class RegisterScreen extends React.Component {
 
             <View style={styles.modalContent}>
               <H2>Ok</H2>
-              <Text>Activity {this.state.activityName} registered</Text>
+              <Text style={{ margin: 10 }}>Activity {this.state.activityName} registered</Text>
 
-              <Button primary block onPress={() => {
+              <Button style={{ margin: 10 }} primary block onPress={() => {
                 this.setModalVisible(!this.state.modalVisible);
               }}>
                 <Text>Close</Text></Button>

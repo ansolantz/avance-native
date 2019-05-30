@@ -22,7 +22,7 @@ export default class HydrationScreen extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Hidration</Title>
+            <Title>Hydration</Title>
           </Body>
           <Right />
         </Header>
@@ -34,7 +34,7 @@ export default class HydrationScreen extends Component {
                 <Thumbnail small source={require('../assets/images/water-icon.png')} />
                 <Body>
                   <Text>Did you know?</Text>
-                  <Text note>Hidration</Text>
+                  <Text note>Hydration</Text>
                 </Body>
               </Left>
             </CardItem>
