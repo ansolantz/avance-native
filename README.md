@@ -33,7 +33,7 @@ For other pruducts that don't have a barcode I have also added an image recognit
 ![Image recognition](./assets/images/app-image-recognition.jpg)
 
 ### Feedback
-Finnaly the user will get feedback in the user feed. As soon as a goal is accomplished, it will be displayed in the feed. The feed will also provide the user with negative feedback (warnings). For instance if he/she drinks to much soda or alcohol, the feed will tell the user to try to reduce the suger intake etc.
+Finaly the user will get feedback in the user feed. As soon as a goal is accomplished, it will be displayed in the feed. The feed will also provide the user with negative feedback (warnings). For instance if he/she drinks to much soda or alcohol, the feed will tell the user to try to reduce the suger intake etc.
 
 
 ![Feed](./assets/images/app-feed-1.jpg)
@@ -43,7 +43,7 @@ Finnaly the user will get feedback in the user feed. As soon as a goal is accomp
 
 #### Levels
 
-For this projet I only had time to develop one level for the three first activities, but the idea is that when a user complets a goal, he/she will come to the next level that increases the difficulty. This would offer basic gamification which I think would be interesting for many users.
+For this project I only had time to develop one level for the three first activities, but the idea is that when a user complets a goal, he/she will come to the next level that increases the difficulty. This would offer basic gamification which I think would be interesting for many users.
 
 #### Push notifications
 
