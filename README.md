@@ -1,10 +1,52 @@
-# avance (Frontend)
+# Avance (Frontend)
 
 ## Habit builder
 
-This app will help people to create good habits every day. I will give recomendations that the user should follow. The result will be displayed in a feed, depending on the user actions.
+This app will help people to create good habits every day. It gives recomendations that the user should follow. The result is displayed in a feed, depending on the user actions.
 
-The application is built in React Native.
+This was my final project at Ironhack Web Developer bootcamp. I only had 1,5 weeks to build it, so I didn't have time to implement all features I would have liked. For the MVP I focused on three activities, Hidration, Vitamins and Simple Exercise.
+
+The application is built in React Native with a backend using Mongo, Express and Node.js.
+
+
+## How it works
+
+### Register activities
+When a user signs in he/she will be taken to the dashboard where the available activities are displayed. You can get more information about the current activity by clicking on the activity tab. Then you can start registring your activities from the info page or directy from the menu. 
+
+
+![Dashboard](./assets/images/app-dashboard.jpg)  ![Info](./assets/images/app-info.jpg) 
+
+Some activities are registrated automatically, for instance the Move activity. There you will see your daily goal and information if you reached it or not. To get this information I used the pedometer available natively in the phone. 
+![Activity Move](./assets/images/app-step-counter.jpg)
+
+Other activities you have to register manually. You can quickly register what you eat or drink just by clicking on the images or you can choose to scan a product with a barcode. For this project I'm using a free api with some basic information about the product. The idea is that for a real app, a much better (paid) api could be used where I could get all the nutrition information to store in the database. This way detail feedback could be provided to the user about nutrition, vitamins, sugar intake and so on.
+
+![Register Activity](./assets/images/app-register-2.jpg) ![Register Activity](./assets/images/app-register-3.jpg) ![FeedBarcode scan](./assets/images/app-barcode.jpg) 
+
+For other pruducts that don't have a barcode I have also added an image recognition feature. Here you can take a photo of a product/fruit/food and then it is sent to the Google Vision API for recognition and the response will be saved in the database for future user feedback.
+![Image recognition](./assets/images/app-image-recognition.jpg)
+
+### Feedback
+Finnaly the user will get feedback in the user feed. As soon as a goal is accomplished, it will be displayed in the feed. The feed will also provide the user with negative feedback (warnings). For instance if he/she drinks to much soda or alcohol, the feed will tell the user to try to reduce the suger intake etc
+![Feed](./assets/images/app-feed-1.jpg)
+
+
+
+### Left todo
+
+#### Levels
+
+For this projet I only had time to develop one level for the three first activities, but the idea is that when a user complets a goal, he/she will come to the next level that increases the difficulty. This would offer basic gamification which I think would be interesting for many users.
+
+#### Push notifications
+
+To make the user come back to the app it would be nice to implement local or push notification in order to let the user know when there is new information available in the feed or when he/ she has forgotten to register activities for a certain amount of time. This would improve stickyness.
+
+
+------
+
+
 
 ## User Stories
 
@@ -28,224 +70,19 @@ The application is built in React Native.
 
   
 
-## Backlog
-
-Activity:
-- Register food with ean scan
-- Register photo with image recognition
-- Read pedometer values
-
-  
-
-# Client
-
-## Routes
-| Method | Path | Component | Permissions | Behavior |
-|--------|------|--------|--| -------|
-| `get`  | `/` | LoginComponent | public |  |
-| `post` | `/auth/signup` | SignupPageComponent| anon only| signup form, link to login, navigate to on boarding after signup |
-| `post` | `/auth/login` | LoginPageComponent | anon only |login form, link to signup, navigate to dashboard after login |
-| `post` | `/auth/logout` | n/a| private | navigate to LoginPage after logout, expire session |
-| `get` | `/onboarding` | OnboardingComponent | private | Handle on boarding, answer questions and store in db. This will be inside signup. |
-| `get` | `/dashboard` | DashboardComponent | private | Show available and future activities |
-| `get` | `/activityInfo` | ActivityInfoConmponent | private | Show info about how to do an activity |
-| `post` | `/activityRegister` | RegisterActivityComponent | private | First case is to click an image of the product eaten or drunken and that this registeres in the db. |
-| `get` | `/feedback` | FeedbackComponent | private | Shows accomplishments (or failures) in a feed |
-| `post `| `/account` | AccountComponent | private | Allows changing user info |
-
-
-
-## Components
-
-- Log in component
-  
-- Profile component
-  
-  - Add profile component 
-  - Edit profile component
-  
-- Omboarding component
-  
-- Activity recomendation component
-  
-- Register activity component
-  
-  - image component
-  - Bar-code scanner component
-  - Image recognition component
-  
-- Feed component
-  
-  - Feed item component
-  
-- Step target component
-  
-- Step display component
-  
-  
-
-
-## Services
-
-- Auth Service
-  - auth.login(user)
-  - auth.signup(user)
-  - auth.logout()
-  - auth.me()
-  - auth.getUser() // synchronous
-- Activity Service
-  - addActivity(data)
-- Feedback Service
-  - getFeedback
-- Account Service
-  - editAccountDetails
-
 # Server
+The server is found [here](https://github.com/ansolantz/avance-backend)
 
-## Models
 
-User model
-
-```
-const userSchema = new Schema({
-  username: String,
-  password: String,
-  displayName: String,
-  email: String,
-  image: {
-    type: String, 
-  },
-  age: String,
-  weight: String,
-  height: String,
-},
-  {
-    timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
-    },
-  });
-
-```
-
-Activity model
-
-```
-const activitySchema = new Schema({
-  activityName: String,
-  data: Object,
-  date: { type: Date, default: Date.now },
-  userId: { type: Schema.Types.ObjectId, ref: 'User' }
-});
-```
-
-Feedback model
-
-```
-const feedSchema = new Schema({
-  activityName: String,
-  feedbackType: String,
-  category: String,
-  userId: { type: Schema.Types.ObjectId, ref: 'User' },
-  image: String,
-  title: String,
-  text: String,
-  date: { type: Date, default: Date.now }
-});
-```
-
-Questionar Answers model
-
-```
-const questAnswSchema = new Schema({
-  userId: { type: Schema.Types.ObjectId, ref: 'User' },
-  questionId: number,
-  answerId: number,
-  date: { type: Date, default: Date.now }
-});
-```
-
-## 
-
-## API Endpoints (backend routes)
-
-- GET /auth/me
-  - 404 if no user in session
-  - 200 with user object
-  
-- POST /auth/signup
-  - 401 if user logged in
-  - body:
-    - username
-    - email
-    - password
-  - validation
-    - fields not empty (422)
-    - user not exists (409)
-  - create user with encrypted password
-  - store user in session
-  - 200 with user object
-  
-- POST /auth/login
-  - 401 if user logged in
-  - body:
-    - username
-    - password
-  - validation
-    - fields not empty (422)
-    - user exists (404)
-    - passdword matches (404)
-  - store user in session
-  - 200 with user object
-  
-- POST /auth/logout
-  - body: (empty)
-  - 204
-  
-- PUT /user/:id
-  - body:
-    - userInfo
-  - update user info
-
-- DELETE /user/:id
-  - body:
-    - userInfo
-  - delete user
-
-- POST /user/addActivity
-  - body:
-    - activityType
-  - add new activity with date
-  
-- GET /user/getActivity
-  - body:
-    - activityType
-  - get registred activities.
-  
-- POST /user/addQuestionairreAnswer
-  - body:
-    - questionId
-    - answerId
-  - add new questionnaire answer with date
-  
-- GET /user/feedback
-  - get array of all user feedback
-  - 200 OK with array of feedback objects
-   
 
 ## Links
 
-### Trello
+###The app
 
-[Trello board](https://trello.com/b/IyZgK8xX/avance) 
+[Deploy Link (mobile)](https://exp.host/@ansolantz/avance-native)
 
 ### Git
 
 [Repository Link](https://github.com/ansolantz/avance-native)
 
-[Deploy Link (mobile)](https://exp.host/@ansolantz/avance-native)
-
-### Slides
-
-[Slides Link](https://docs.google.com/presentation/d/1cM6jcVP8W3MW1Noit5v_rjv8CHtO1uaUa9JWNQtgx5s/edit?usp=sharing)
 

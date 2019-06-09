@@ -3,8 +3,6 @@ import React from "react";
 import { Pedometer } from "expo";
 import { StyleSheet, View, Modal, Alert } from "react-native";
 import { Container, Header, Text, Title, Icon, Content, Button, H2, Left, Right, Body } from "native-base";
-
-
 import CircularProgress from "../components/CircularProgress";
 import auth from "../lib/auth-services";
 

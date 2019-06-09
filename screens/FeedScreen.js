@@ -22,7 +22,6 @@ import auth from '../lib/auth-services'
 import FeedCard from '../components/FeedCard';
 
 
-
 export default class FeedScreen extends Component {
   constructor(props) {
     super(props);

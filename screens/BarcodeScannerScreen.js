@@ -19,9 +19,7 @@ export default class BarcodeScannerScreen extends Component {
       category: '',
       nutrition_facts: '',
       images: ['']
-
     }
-
   };
 
   setModalVisible(visible) {
